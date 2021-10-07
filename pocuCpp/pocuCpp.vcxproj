@@ -139,8 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Hanoi.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
+    <ClCompile Include="strExam.cpp" />
+    <ClCompile Include="strMain.cpp" />
     <ClCompile Include="StrReverse.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="strFunc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

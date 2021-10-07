@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-int main(void) {
+int mainReverse(void) {
 	const size_t LENGTH = 256;
 	char str[LENGTH];
 	char tmp[LENGTH];

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="arrayExam.cpp" />
     <ClCompile Include="Hanoi.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
     <ClCompile Include="strExam.cpp" />

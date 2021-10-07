@@ -27,8 +27,11 @@
     <ClCompile Include="strExam.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="arrayExam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="strMain.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

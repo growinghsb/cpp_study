@@ -55,7 +55,7 @@ void changeUpperandLower(void) {
 		{
 			*p = *p + 32; // 대문자 -> 소문자
 		}
-		else if(*p > 96 && *p < 123)
+		else if (*p > 96 && *p < 123)
 		{
 			*p = *p - 32; // 소문자 -> 대문자
 		}

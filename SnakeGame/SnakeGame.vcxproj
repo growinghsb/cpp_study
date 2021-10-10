@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{71d65bea-259f-4c5e-a82c-af73b7102891}</ProjectGuid>
-    <RootNamespace>pocuCpp</RootNamespace>
+    <ProjectGuid>{f7303df4-ccc6-4549-bc47-17031437f014}</ProjectGuid>
+    <RootNamespace>SnakeGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,17 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="arrayExam.cpp" />
-    <ClCompile Include="HelloWorld.cpp" />
-    <ClCompile Include="strExam.cpp" />
-    <ClCompile Include="strMain.cpp" />
-    <ClCompile Include="StrReverse.cpp" />
-    <ClCompile Include="Vector.cpp" />
-    <ClCompile Include="VectorMain.cpp" />
+    <ClCompile Include="GameAlgorithm.cpp" />
+    <ClCompile Include="GameBase.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="strFunc.h" />
-    <ClInclude Include="Vector.h" />
+    <ClInclude Include="GameAlgorithm.h" />
+    <ClInclude Include="GameBase.h" />
+    <ClInclude Include="Global.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

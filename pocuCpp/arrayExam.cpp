@@ -11,7 +11,7 @@ static const size_t LENGTH = 128;
 static int arr[LENGTH] = { 4,3,18,1,5,9,10,3,15,3, INT32_MAX, };
 static size_t pointer;
 
-int main(void) {
+int mainArr(void) {
 	//arrInMax();
 	add(100, 5);
 	printArr();

@@ -3,7 +3,7 @@
 using namespace sample;
 using namespace std;
 
-int main(void) {
+int mainVec(void) {
 
 	Vector vec1(10, 20);
 	Vector vec2(vec1);

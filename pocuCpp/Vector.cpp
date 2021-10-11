@@ -34,7 +34,6 @@ namespace sample {
 
 	bool Vector::operator==(const Vector& rhs) const
 	{
-		std::cout << "여기 타니? 구현";
 		return (mX == rhs.mX && mY == rhs.mY);
 	}
 }

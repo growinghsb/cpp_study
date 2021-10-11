@@ -139,7 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="AnimalMain.cpp" />
     <ClCompile Include="arrayExam.cpp" />
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
     <ClCompile Include="strExam.cpp" />
     <ClCompile Include="strMain.cpp" />
@@ -148,6 +151,8 @@
     <ClCompile Include="VectorMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animal.h" />
+    <ClInclude Include="Cat.h" />
     <ClInclude Include="strFunc.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>

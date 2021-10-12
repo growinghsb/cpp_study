@@ -14,18 +14,21 @@ int main(void) {
 	Magician* fireMagician = new Magician("Wizard of Anie");
 	fireMagician->SetAttunement(new Fire(fireMagician));
 
-	Magician* magicians[] = { noneMagician, fireMagician };
-	size_t len = sizeof(magicians) / sizeof(Magician*);
+	Magician** magicians = new Magician*[2];
+	magicians[0] = noneMagician;
+	magicians[1] = fireMagician;
 
-	for (size_t i = 0; i < len; i++)
+	for (size_t i = 0; i < 2; i++)
 	{
-		cout << magicians[i]->GetName() << endl;
-		magicians[i]->Attack();
-		magicians[i]->UseEliteSkill();
-		magicians[i]->OnDeath();
+		cout << (*(magicians + i))->GetName() << endl;
+		(*(magicians + i))->Attack();
+		(*(magicians + i))->UseEliteSkill();
+		(*(magicians + i))->OnDeath();
 	}
 
 	delete noneMagician;
+	delete fireMagician;
+	delete[] magicians;
 
 	return 0;
 }

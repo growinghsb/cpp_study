@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main(void) {
+int main2(void) {
 	int starLoc = 24; // * 의 위치값, 처음은 24
 	int pre = 24;
 	srand(static_cast<unsigned int>(time(0)));

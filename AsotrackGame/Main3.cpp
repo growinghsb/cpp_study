@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main(void) {
+int main3(void) {
 	const size_t LENGTH = 25;
 	size_t board[LENGTH] = {};
 

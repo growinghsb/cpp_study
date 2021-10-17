@@ -3,12 +3,12 @@
 #include <conio.h>
 
 struct player {
-	int x;
-	int y;
+	int x = 0;
+	int y = 0;
 	bool finish = false;
 };
 
-typedef player USER;
+typedef player PLAYER;
 typedef player* PPOINTER;
 
 using namespace std;
@@ -16,15 +16,15 @@ static const size_t ROW = 20;
 static const size_t COL = 21;
 
 void SetMaze(char[][COL], PPOINTER);
-void PrintMaze(char[][COL], PPOINTER);
-void Move(char, PPOINTER, char[][COL]);
-void MoveRight(PPOINTER, char[][COL]);
-void MoveLeft(PPOINTER, char[][COL]);
-void MoveUp(PPOINTER, char[][COL]);
-void MoveDown(PPOINTER, char[][COL]);
+void PrintMaze(const char[][COL], PPOINTER);
+void Move(char, PPOINTER, const char[][COL]);
+void MoveRight(PPOINTER, const char[][COL]);
+void MoveLeft(PPOINTER, const char[][COL]);
+void MoveUp(PPOINTER, const char[][COL]);
+void MoveDown(PPOINTER, const char[][COL]);
 
 int main(void) {
-	USER player;
+	PLAYER player;
 	char maze[ROW][COL] = {};
 
 	SetMaze(maze, &player);
@@ -50,7 +50,7 @@ int main(void) {
 	return 0;
 }
 
-void Move(char input, PPOINTER player, char maze[][COL]) {
+void Move(char input, PPOINTER player, const char maze[][COL]) {
 	switch (input)
 	{
 	case 'a':
@@ -72,31 +72,31 @@ void Move(char input, PPOINTER player, char maze[][COL]) {
 	}
 }
 
-void MoveRight(PPOINTER player, char maze[][COL]) {
+void MoveRight(PPOINTER player, const char maze[][COL]) {
 	if (player->x + 1 < COL - 1 && maze[player->y][player->x + 1] != '0') {
 		player->x += 1;
 	}
 }
 
-void MoveLeft(PPOINTER player, char maze[][COL]) {
+void MoveLeft(PPOINTER player, const char maze[][COL]) {
 	if (player->x - 1 > -1 && maze[player->y][player->x - 1] != '0') {
 		player->x -= 1;
 	}
 }
 
-void MoveUp(PPOINTER player, char maze[][COL]) {
+void MoveUp(PPOINTER player, const char maze[][COL]) {
 	if (player->y - 1 > -1 && maze[player->y - 1][player->x] != '0') {
 		player->y -= 1;
 	}
 }
 
-void MoveDown(PPOINTER player, char maze[][COL]) {
+void MoveDown(PPOINTER player, const char maze[][COL]) {
 	if (player->y + 1 < ROW && maze[player->y + 1][player->x] != '0') {
 		player->y += 1;
 	}
 }
 
-void PrintMaze(char maze[][COL], PPOINTER player) {
+void PrintMaze(const char maze[][COL], PPOINTER player) {
 	for (size_t i = 0; i < ROW; i++)
 	{
 		for (size_t j = 0; j < ROW; j++)

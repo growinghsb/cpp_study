@@ -5,6 +5,7 @@
 struct player {
 	int x = 0;
 	int y = 0;
+	size_t count = 0;
 	bool finish = false;
 };
 
@@ -23,10 +24,12 @@ void MoveLeft(PPOINTER, const char[][COL]);
 void MoveUp(PPOINTER, const char[][COL]);
 void MoveDown(PPOINTER, const char[][COL]);
 
+
+
 int main(void) {
 	PLAYER player;
 	char maze[ROW][COL] = {};
-
+	
 	SetMaze(maze, &player);
 
 	while (true) {
@@ -34,6 +37,7 @@ int main(void) {
 
 		PrintMaze(maze, &player);
 		char input = _getch();
+		player.count++;
 
 		if (input == 'q') {
 			cout << "게임을 종료 합니다." << endl;
@@ -41,7 +45,7 @@ int main(void) {
 		}
 
 		if (player.finish == true) {
-			cout << "탈출 성공!!! 게임 끝!!!";
+			cout << player.count <<"번 시도, 탈출 성공!!! 게임 끝!!!";
 			break;
 		}
 

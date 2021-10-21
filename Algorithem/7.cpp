@@ -2,9 +2,9 @@
 
 using namespace std;
 
-int main(void) {
+int main7(void) {
 	size_t const LENGTH = 100;
-	char input[100] = {};
+	char input[LENGTH] = {};
 	char* bp = input;
 	char* cp = input;
 

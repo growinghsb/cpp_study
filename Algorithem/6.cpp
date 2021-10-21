@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(void) {
+int main6(void) {
 	size_t const LENGTH = 50;
 	char chArr[LENGTH] = {};
 	char* p = chArr;

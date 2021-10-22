@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(void) {
+int main9(void) {
 	size_t num;
 
 	cin >> num;

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(void) {
+int main8(void) {
 	const size_t LENGTH = 30;
 	char input[LENGTH] = {};
 	char* p = input;

@@ -64,26 +64,28 @@ void Sort(const arr_t* arr, const bool asc)
 
 
 void Asc(const arr_t* arr) {
-	for (unsigned int i = 0; i < arr->iCount - 1; i++)
-	{
+	bool proceeding = true;
+	while (proceeding) {
+		proceeding = false;
 		for (unsigned int j = 0; j < arr->iCount - 1; j++)
 		{
-
 			if (*(arr->pInt + j) > *(arr->pInt + j + 1)) {
 				Swap(arr, j);
+				proceeding = true;
 			}
 		}
 	}
 }
 
 void Desc(const arr_t* arr) {
-	for (unsigned int i = 0; i < arr->iCount - 1; i++)
-	{
+	bool proceeding = true;
+	while (proceeding) {
+		proceeding = false;
 		for (unsigned int j = 0; j < arr->iCount - 1; j++)
 		{
-
 			if (*(arr->pInt + j) < *(arr->pInt + j + 1)) {
 				Swap(arr, j);
+				proceeding = true;
 			}
 		}
 	}

@@ -10,6 +10,9 @@ int main(void) {
 
 	arr_t arr;
 	InitArr(&arr, 10);
+	cout << "초기화 직후 사이즈" << endl;
+	cout << "iCount: " << arr.iCount << endl;
+	cout << "iSize : " << arr.iSize << endl;
 
 	for (unsigned int i = 0; i < 15; i++) {
 		AddBack(&arr, rand() % 1000);
@@ -42,6 +45,8 @@ int main(void) {
 	cout << "내림차순 정렬" << endl;
 	Sort(&arr, false);
 	print(&arr);
+
+	Clear(&arr);
 
 	return 0;
 }

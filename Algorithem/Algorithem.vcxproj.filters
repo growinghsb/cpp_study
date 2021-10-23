@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="DinamicArray">
+      <UniqueIdentifier>{5c1bddbe-b931-437b-9cbc-b9958ea9175e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Practice1.cpp">
@@ -48,5 +51,16 @@
     <ClCompile Include="10.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Arr.cpp">
+      <Filter>DinamicArray</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>DinamicArray</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arr.h">
+      <Filter>DinamicArray</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

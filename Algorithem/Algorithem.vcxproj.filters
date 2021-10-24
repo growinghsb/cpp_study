@@ -16,6 +16,9 @@
     <Filter Include="DinamicArray">
       <UniqueIdentifier>{5c1bddbe-b931-437b-9cbc-b9958ea9175e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LinkedList">
+      <UniqueIdentifier>{1b996bf2-1bd6-4860-9e6c-7bd44d286f57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Practice1.cpp">
@@ -57,10 +60,19 @@
     <ClCompile Include="main.cpp">
       <Filter>DinamicArray</Filter>
     </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedMain.cpp">
+      <Filter>LinkedList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">
       <Filter>DinamicArray</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>LinkedList</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

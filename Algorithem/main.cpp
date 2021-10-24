@@ -9,7 +9,7 @@ void Asc(const int* arr, const unsigned int count);
 void Desc(const int* arr, const unsigned int count);
 void Swap(const int* arr, const unsigned int j);
 
-int main(void) {
+int mainA(void) {
 	srand(static_cast<int>(time(0)));
 
 	arr_t arr;

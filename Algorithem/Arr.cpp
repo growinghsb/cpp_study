@@ -5,9 +5,6 @@
 using namespace std;
 
 void ScaleUp(arr_t* arr);
-void Asc(const arr_t* arr);
-void Desc(const arr_t* arr);
-void Swap(const arr_t* arr, const unsigned int j);
 
 void InitArr(arr_t* arr, const unsigned int initSize) {
 	arr->iSize = initSize;
@@ -57,45 +54,15 @@ void RemoveIndex(arr_t* arr, const unsigned int index)
 	*(arr->pInt + index - 1) = *(arr->pInt + arr->iCount);
 }
 
-void Sort(const arr_t* arr, const bool asc)
+void Sort(const int* arr, unsigned int count, void(*pOrder)(const int* pData, const unsigned int count))
 {
-	asc ? Asc(arr) : Desc(arr);
+	pOrder(arr, count);
 }
 
 
-void Asc(const arr_t* arr) {
-	bool proceeding = true;
-	while (proceeding) {
-		proceeding = false;
-		for (unsigned int j = 0; j < arr->iCount - 1; j++)
-		{
-			if (*(arr->pInt + j) > *(arr->pInt + j + 1)) {
-				Swap(arr, j);
-				proceeding = true;
-			}
-		}
-	}
-}
 
-void Desc(const arr_t* arr) {
-	bool proceeding = true;
-	while (proceeding) {
-		proceeding = false;
-		for (unsigned int j = 0; j < arr->iCount - 1; j++)
-		{
-			if (*(arr->pInt + j) < *(arr->pInt + j + 1)) {
-				Swap(arr, j);
-				proceeding = true;
-			}
-		}
-	}
-}
 
-void Swap(const arr_t* arr, const unsigned int j) {
-	int tmp = *(arr->pInt + j);
-	*(arr->pInt + j) = *(arr->pInt + j + 1);
-	*(arr->pInt + j + 1) = tmp;
-}
+
 
 void print(const arr_t* arr)
 {

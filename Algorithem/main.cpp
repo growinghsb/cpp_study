@@ -5,6 +5,10 @@
 
 using namespace std;
 
+void Asc(const int* arr, const unsigned int count);
+void Desc(const int* arr, const unsigned int count);
+void Swap(const int* arr, const unsigned int j);
+
 int main(void) {
 	srand(static_cast<int>(time(0)));
 
@@ -22,7 +26,7 @@ int main(void) {
 	cout << "iSize : " << arr.iSize << endl;
 
 	print(&arr);
-	
+
 	RemoveIndex(&arr, 10);
 	cout << "삭제 후" << endl;
 
@@ -39,14 +43,53 @@ int main(void) {
 	cout << "iSize : " << arr.iSize << endl;
 
 	cout << "오름차순 정렬" << endl;
-	Sort(&arr, true);
+	Sort(arr.pInt, arr.iCount, Asc);
 	print(&arr);
 
 	cout << "내림차순 정렬" << endl;
-	Sort(&arr, false);
+	Sort(arr.pInt, arr.iCount, Desc);
 	print(&arr);
 
 	Clear(&arr);
 
 	return 0;
 }
+
+void Asc(const int* arr, const unsigned int count) {
+	bool proceeding = true;
+	while (proceeding) {
+		proceeding = false;
+		for (unsigned int j = 0; j < count - 1; j++)
+		{
+			
+			if (*(arr + j) > *(arr + j + 1)) {
+				Swap(arr, j);
+				proceeding = true;
+			}
+		}
+	}
+}
+
+void Desc(const int* arr, const unsigned int count) {
+	bool proceeding = true;
+	while (proceeding) {
+		proceeding = false;
+		for (unsigned int j = 0; j < count - 1; j++)
+		{
+			if (*(arr + j) < *(arr + j + 1)) {
+				Swap(arr, j);
+				proceeding = true;
+			}
+		}
+	}
+}
+
+void Swap(const int* arr, const unsigned int j) {
+	int* notConstP = const_cast<int*>(arr); // 임시로 const 제거
+
+	int tmp = *(arr + j);
+	*(notConstP + j) = *(arr + j + 1);
+	*(notConstP + j + 1) = tmp;
+}
+
+

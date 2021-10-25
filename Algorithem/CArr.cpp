@@ -6,15 +6,17 @@
 using namespace std;
 
 CArr::CArr()
-	: mSize(2) // 기본 정책은 공간 2개 만들기, 더 필요하면 ReSize() 이용
+	: mSize(2) // 기본 정책은 공간 2개 만들기, 더 필요하면 resize() 이용
 	, mCount(0)
 {
+	
 	mArr = new int[mSize];
 }
 
 CArr::CArr(const CArr& other)
 	: mSize(other.mSize)
 	, mCount(other.mCount)
+	
 {
 	mArr = new int[mSize];
 
@@ -124,7 +126,7 @@ void CArr::print() const
 	{
 		cout << *(mArr + i) << "  ";
 	}
-	cout << endl << endl;
+	cout << endl;
 }
 
 void CArr::dataCopy(int* target, const int* source, const unsigned int count)

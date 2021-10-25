@@ -11,7 +11,7 @@ int main(void) {
 	cout << "count: " << arr.getCount() << endl;
 
 	
-	arr.resize(10);
+	arr.resize(500);
 	cout << "'resize 후'" << endl;
 	cout << "size: " << arr.getSize() << endl;
 	cout << "count: " << arr.getCount() << endl;
@@ -62,9 +62,10 @@ int main(void) {
 	arr2.pushBack(30);
 
 	bool result = arr1 == arr2;
-	cout << boolalpha << "arr1 == arr2: " << result << endl;
+	cout << boolalpha << "arr1 = arr2 진행 전: " << result << endl;
 
 	arr1 = arr2;
+
 	result = arr1 == arr2;
 	cout << boolalpha << "arr1 = arr2 진행 후: " << result << endl;
 

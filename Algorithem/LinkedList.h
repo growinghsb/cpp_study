@@ -2,7 +2,7 @@
 typedef struct node {
 	struct node* next;
 	int data;
-	char emptySpace[4];
+	char emptySpace[4] = {};
 }Node;
 
 typedef struct list {

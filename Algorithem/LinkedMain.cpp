@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main(void) {
+int mainL(void) {
 	List list;
 	InitList(&list);
 
@@ -17,7 +17,7 @@ int main(void) {
 	PushBack(&list, 500);
 
 	cout << "데이터 넣기 끝" << endl;
-	
+
 	Print(&list);
 	cout << "출력 끝" << endl;
 

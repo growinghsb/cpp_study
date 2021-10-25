@@ -147,6 +147,8 @@
     <ClCompile Include="9.cpp" />
     <ClCompile Include="9Mod.cpp" />
     <ClCompile Include="Arr.cpp" />
+    <ClCompile Include="CArr.cpp" />
+    <ClCompile Include="CArrMain.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedMain.cpp" />
     <ClCompile Include="main.cpp" />
@@ -157,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h" />
+    <ClInclude Include="CArr.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

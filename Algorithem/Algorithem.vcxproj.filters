@@ -19,6 +19,9 @@
     <Filter Include="LinkedList">
       <UniqueIdentifier>{1b996bf2-1bd6-4860-9e6c-7bd44d286f57}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CDinamicArray">
+      <UniqueIdentifier>{050c2709-3f0f-4ec8-a72f-3f4f9eadbec8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Practice1.cpp">
@@ -66,6 +69,12 @@
     <ClCompile Include="LinkedMain.cpp">
       <Filter>LinkedList</Filter>
     </ClCompile>
+    <ClCompile Include="CArr.cpp">
+      <Filter>CDinamicArray</Filter>
+    </ClCompile>
+    <ClCompile Include="CArrMain.cpp">
+      <Filter>CDinamicArray</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">
@@ -73,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="LinkedList.h">
       <Filter>LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="CArr.h">
+      <Filter>CDinamicArray</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

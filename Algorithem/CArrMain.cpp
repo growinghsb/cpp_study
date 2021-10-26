@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main(void) {
+int mainCArr(void) {
 	CArr<int> arr;
 	cout << "size: " << arr.getSize() << endl;
 	cout << "count: " << arr.getCount() << endl;

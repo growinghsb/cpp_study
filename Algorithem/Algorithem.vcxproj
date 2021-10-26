@@ -151,6 +151,7 @@
     <ClCompile Include="CArrMain.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedMain.cpp" />
+    <ClCompile Include="ListMain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Practice1.cpp" />
     <ClCompile Include="Practice2.cpp" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="Arr.h" />
     <ClInclude Include="CArr.h" />
+    <ClInclude Include="CList.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -22,6 +22,9 @@
     <Filter Include="CDinamicArray">
       <UniqueIdentifier>{050c2709-3f0f-4ec8-a72f-3f4f9eadbec8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CLinkedList">
+      <UniqueIdentifier>{76f7159b-a9a0-4480-bda2-b6531d24ebac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Practice1.cpp">
@@ -75,6 +78,9 @@
     <ClCompile Include="CArrMain.cpp">
       <Filter>CDinamicArray</Filter>
     </ClCompile>
+    <ClCompile Include="ListMain.cpp">
+      <Filter>CLinkedList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">
@@ -85,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="CArr.h">
       <Filter>CDinamicArray</Filter>
+    </ClInclude>
+    <ClInclude Include="CList.h">
+      <Filter>CLinkedList</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

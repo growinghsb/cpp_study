@@ -2,8 +2,9 @@
 
 #include "CList.h"
 
-int mainList(void) {
+int main(void) {
 	LinkedList<int> list;
+
 	list.pushBack(10);
 	list.pushBack(20);
 	list.pushFront(1000);

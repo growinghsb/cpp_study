@@ -32,8 +32,6 @@ public:
 	LinkedList();
 	~LinkedList();
 
-
-
 	void pushBack(T data);
 	void pushFront(T data);
 	void remove(T data);

@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// CArr class
 template<typename T>
 class CArr
 {
@@ -33,8 +34,7 @@ private:
 	void dataCopy(T* target, const T* source, const unsigned int count);
 };
 
-// 템플릿 클래스 함수 상세 구현
-
+// CArr class func
 template<typename T>
 CArr<T>::CArr()
 	: mSize(2) // 기본 정책은 공간 2개 만들기, 더 필요하면 resize() 이용

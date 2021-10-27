@@ -2,7 +2,7 @@
 
 #include "CList.h"
 
-int main(void) {
+int mainList(void) {
 	LinkedList<int> list;
 
 	list.pushBack(10);

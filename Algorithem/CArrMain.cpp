@@ -9,7 +9,7 @@ using std::endl;
 using std::vector;
 using std::boolalpha;
 
-int main(void) {
+int mainArr(void) {
 	CArr<int> arr;
 	cout << "size: " << arr.getSize() << endl;
 	cout << "count: " << arr.getCount() << endl;

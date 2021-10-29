@@ -25,6 +25,9 @@
     <Filter Include="CLinkedList">
       <UniqueIdentifier>{76f7159b-a9a0-4480-bda2-b6531d24ebac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BinarySearchTree">
+      <UniqueIdentifier>{c745161e-644b-460b-b51e-d3d6704ce079}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Practice1.cpp">
@@ -81,6 +84,9 @@
     <ClCompile Include="ListMain.cpp">
       <Filter>CLinkedList</Filter>
     </ClCompile>
+    <ClCompile Include="MapMain.cpp">
+      <Filter>BinarySearchTree</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">
@@ -94,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="CList.h">
       <Filter>CLinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>BinarySearchTree</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

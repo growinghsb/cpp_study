@@ -153,6 +153,7 @@
     <ClCompile Include="LinkedMain.cpp" />
     <ClCompile Include="ListMain.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapMain.cpp" />
     <ClCompile Include="Practice1.cpp" />
     <ClCompile Include="Practice2.cpp" />
     <ClCompile Include="Practice3.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="CArr.h" />
     <ClInclude Include="CList.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

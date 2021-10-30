@@ -15,6 +15,7 @@
 #pragma once
 
 #include <iostream>
+#include <cassert>
 
 using std::cout;
 using std::endl;
@@ -29,15 +30,15 @@ private:
 	ValueT  mValue;
 
 public:
-	MyPair(KeyT key, ValueT value);
+	MyPair(const KeyT& key, const ValueT& value);
 	~MyPair();
 
-	KeyT   GetKey() const;
-	ValueT GetValue() const;
+	const KeyT& GetKey() const;
+	const ValueT& GetValue() const;
 };
 
 template<typename KeyT, typename ValueT>
-inline MyPair<KeyT, ValueT>::MyPair(KeyT key, ValueT value)
+inline MyPair<KeyT, ValueT>::MyPair(const KeyT& key, const ValueT& value)
 	: mKey(key)
 	, mValue(value)
 {
@@ -49,15 +50,23 @@ inline MyPair<KeyT, ValueT>::~MyPair()
 }
 
 template<typename KeyT, typename ValueT>
-inline KeyT MyPair<KeyT, ValueT>::GetKey() const
+inline const KeyT& MyPair<KeyT, ValueT>::GetKey() const
 {
 	return mKey;
 }
 
 template<typename KeyT, typename ValueT>
-inline ValueT MyPair<KeyT, ValueT>::GetValue() const
+inline const ValueT& MyPair<KeyT, ValueT>::GetValue() const
 {
 	return mValue;
+}
+
+/*
+	make_pair func
+*/
+template<typename KeyT, typename ValueT>
+const MyPair<KeyT, ValueT> MakeMyPair(const KeyT& key, const ValueT& value) {
+	return MyPair<KeyT, ValueT>(key, value);
 }
 
 /*
@@ -72,10 +81,10 @@ private:
 	Node* mRightChild;
 
 public:
-	Node(MyPair<KeyT, ValueT> pair);
+	Node(const MyPair<KeyT, ValueT>& pair);
 	~Node();
 
-	MyPair<KeyT, ValueT> GetPair() const;
+	MyPair<KeyT, ValueT>* GetPair();
 	Node<KeyT, ValueT>* GetParent() const;
 	Node<KeyT, ValueT>* GetLeftChild() const;
 	Node<KeyT, ValueT>* GetRightChild() const;
@@ -83,11 +92,16 @@ public:
 	void SetParent(Node<KeyT, ValueT>* parent);
 	void SetLeftChild(Node<KeyT, ValueT>* leftChild);
 	void SetRightChild(Node<KeyT, ValueT>* rightChild);
+	/*
+		Setter 에 들어오는 매개변수도 const 면 안된다.
+		멤버변수 = 매개변수 하는데 const 매개변수면 대입이 안된다.
+		멤버변수가 const 가 아니기 때문
+	*/
 
 };
 
 template<typename KeyT, typename ValueT>
-inline Node<KeyT, ValueT>::Node(MyPair<KeyT, ValueT> pair)
+inline Node<KeyT, ValueT>::Node(const MyPair<KeyT, ValueT>& pair)
 	: mPair(pair)
 	, mParent(nullptr)
 	, mLeftChild(nullptr)
@@ -101,9 +115,10 @@ inline Node<KeyT, ValueT>::~Node()
 }
 
 template<typename KeyT, typename ValueT>
-inline MyPair<KeyT, ValueT> Node<KeyT, ValueT>::GetPair() const
+inline MyPair<KeyT, ValueT>* Node<KeyT, ValueT>::GetPair() // 여기 const 가 붙으면 & 반환이 안된다. 
+														   // 변경 가능성이 있다고 생각하기 때문
 {
-	return mPair;
+	return &mPair;
 }
 
 template<typename KeyT, typename ValueT>
@@ -154,9 +169,132 @@ private:
 public:
 	MyMap();
 	~MyMap();
+
 	bool Insert(const MyPair<KeyT, ValueT>& pair);
+
+	class Iterator;
+	MyMap<KeyT, ValueT>::Iterator begin();
+	MyMap<KeyT, ValueT>::Iterator end();
+	MyMap<KeyT, ValueT>::Iterator find(const KeyT& key);
+
+	/*
+		inner class Iterator
+	*/
+	class Iterator {
+	private:
+		MyMap<KeyT, ValueT>* mCMap;
+		Node<KeyT, ValueT>* mCNode;
+
+	public:
+		Iterator();
+		Iterator(MyMap<KeyT, ValueT>* map, Node<KeyT, ValueT>* node);
+		~Iterator();
+
+		void SetMap(MyMap<KeyT, ValueT>* map);
+		void SetNode(Node<KeyT, ValueT>* node);
+
+		bool operator==(const MyMap<KeyT, ValueT>::Iterator& rhs) const;
+		bool operator!=(const MyMap<KeyT, ValueT>::Iterator& rhs) const;
+		const MyPair<KeyT, ValueT>* operator->() const;
+		const MyPair<KeyT, ValueT>& operator*() const;
+		MyMap<KeyT, ValueT>::Iterator& operator++();
+	};
 };
 
+/*
+	Iterator class func
+*/
+template<typename KeyT, typename ValueT>
+inline MyMap<KeyT, ValueT>::Iterator::Iterator()
+	: mCMap(nullptr)
+	, mCNode(nullptr)
+{
+}
+
+template<typename KeyT, typename ValueT>
+inline MyMap<KeyT, ValueT>::Iterator::Iterator(MyMap<KeyT, ValueT>* map, Node<KeyT, ValueT>* node)
+	: mCMap(map)
+	, mCNode(node)
+{
+}
+
+template<typename KeyT, typename ValueT>
+inline MyMap<KeyT, ValueT>::Iterator::~Iterator()
+{
+}
+
+template<typename KeyT, typename ValueT>
+inline void MyMap<KeyT, ValueT>::Iterator::SetMap(MyMap<KeyT, ValueT>* map)
+{
+	mCMap = map;
+}
+
+template<typename KeyT, typename ValueT>
+inline void MyMap<KeyT, ValueT>::Iterator::SetNode(Node<KeyT, ValueT>* node)
+{
+	mCNode = node;
+}
+
+template<typename KeyT, typename ValueT>
+inline bool MyMap<KeyT, ValueT>::Iterator::operator==(const MyMap<KeyT, ValueT>::Iterator& rhs) const
+{
+	assert(nullptr != mCMap && nullptr != mCNode);
+
+	if (mCMap->mRootNode == rhs.mCMap->mRootNode && mCNode->GetPair().GetKey() == rhs.mCNode->GetPair().GetKey())
+	{
+		return true;
+	}
+	return false;
+}
+
+template<typename KeyT, typename ValueT>
+inline bool MyMap<KeyT, ValueT>::Iterator::operator!=(const MyMap<KeyT, ValueT>::Iterator& rhs) const
+{
+	assert(nullptr != mCMap && nullptr != mCNode);
+
+	if (mCMap->mRootNode != rhs.mCMap->mRootNode || mCNode->GetPair().GetKey() != rhs.mCNode->GetPair().GetKey())
+	{
+		return true;
+	}
+	return false;
+}
+
+template<typename KeyT, typename ValueT>
+inline const MyPair<KeyT, ValueT>* MyMap<KeyT, ValueT>::Iterator::operator->() const
+{
+	assert(nullptr != mCNode);
+
+	return mCNode->GetPair();
+}
+
+template<typename KeyT, typename ValueT>
+inline const MyPair<KeyT, ValueT>& MyMap<KeyT, ValueT>::Iterator::operator*() const
+{
+	assert(nullptr != mCNode);
+
+	return *(mCNode->GetPair());
+}
+
+template<typename KeyT, typename ValueT>
+inline MyMap<KeyT, ValueT>::Iterator& MyMap<KeyT, ValueT>::Iterator::operator++()
+{
+	/*
+		중위후속자: 자신의 다음 순서 - next
+		중위선행자: 자신의 이전 순서 - prev
+
+		선행자는 출력하지 않는다. 
+		다음 반환되는 iterator 에서는 후속자를 가르킨다. 
+		iter가 최상위루트면, 출력 후 오른쪽자식으로
+		한 번 이동 후 쭉 왼쪽자식으로 내려가 가장 작은
+		node 를 가르키는 iter 를 반환한다.
+		그리고 똑같이 선행자는 출력하지 않고, 
+		후속자만 가르키면 된다. 
+	*/
+}
+
+/*
+	MyMap class func
+*/
 template<typename KeyT, typename ValueT>
 inline MyMap<KeyT, ValueT>::MyMap()
 	: mRootNode(nullptr)
@@ -187,7 +325,7 @@ inline bool MyMap<KeyT, ValueT>::Insert(const MyPair<KeyT, ValueT>& pair)
 		{
 			parent = target;
 
-			if (target->GetPair().GetKey() < newNode->GetPair().GetKey())
+			if (target->GetPair()->GetKey() < newNode->GetPair()->GetKey())
 			{
 				if (nullptr == target->GetRightChild())
 				{
@@ -196,7 +334,7 @@ inline bool MyMap<KeyT, ValueT>::Insert(const MyPair<KeyT, ValueT>& pair)
 				}
 				target = target->GetRightChild();
 			}
-			else if (target->GetPair().GetKey() > newNode->GetPair().GetKey())
+			else if (target->GetPair()->GetKey() > newNode->GetPair()->GetKey())
 			{
 				if (nullptr == target->GetLeftChild())
 				{
@@ -215,4 +353,43 @@ inline bool MyMap<KeyT, ValueT>::Insert(const MyPair<KeyT, ValueT>& pair)
 	++mCount;
 
 	return true;
+}
+
+template<typename KeyT, typename ValueT>
+inline typename MyMap<KeyT, ValueT>::Iterator MyMap<KeyT, ValueT>::begin()
+{
+	Node<KeyT, ValueT>* target = mRootNode;
+
+	while (nullptr != target->GetLeftChild())
+	{
+		target = target->GetLeftChild();
+	}
+	return MyMap<KeyT, ValueT>::Iterator(this, target);
+}
+
+template<typename KeyT, typename ValueT>
+inline typename MyMap<KeyT, ValueT>::Iterator MyMap<KeyT, ValueT>::end()
+{
+	return MyMap<KeyT, ValueT>::Iterator(this, nullptr);
+}
+
+template<typename KeyT, typename ValueT>
+inline typename MyMap<KeyT, ValueT>::Iterator MyMap<KeyT, ValueT>::find(const KeyT& key)
+{
+	MyMap<KeyT, ValueT>::Iterator iter;
+	iter.SetMap(this);
+	iter.SetNode(nullptr);
+
+	Node<KeyT, ValueT>* target = mRootNode;
+
+	while (nullptr != target)
+	{
+		if (target->GetPair()->GetKey() == key)
+		{
+			iter.SetNode(target);
+			break;
+		}
+		target->GetPair()->GetKey() < key ? target = target->GetRightChild() : target = target->GetLeftChild();
+	}
+	return iter;
 }

@@ -22,6 +22,10 @@ int main(void) {
 	cout << mIter->first << endl;
 	cout << mIter->second << endl;
 
+	mIter = m.find((int)10); // iterator 반환
+	//(*mIter); // pair& 반환, .연산자로 pair 데이터 접근 가능
+	//mIter->first; // pair* 반환, ->연산자로 pair 데이터 접근 가능
+
 	/*
 		MyMap test place
 	*/
@@ -51,8 +55,19 @@ int main(void) {
 
 	for (unsigned int i = 0; i < 10; i++)
 	{
-		myMap.Insert(MyPair<int, int>(keys[i], i + 1));
+		myMap.Insert(MakeMyPair<int, int>(keys[i], i + 1));
 	}
+	myMap.Insert(MakeMyPair<int, int>(1001, 10000));
+	myMap.Insert(MakeMyPair<int, int>(2001, 20000));
+
+	MyMap<int, int>::Iterator iter1 = myMap.begin();
+	MyMap<int, int>::Iterator iter2 = myMap.end();
+
+	MyMap<int, int>::Iterator result1 = myMap.find((int)1001);
+	MyMap<int, int>::Iterator result2 = myMap.find((int)2001);
+
+	cout << iter1->GetKey() << endl; // pair* 반환해서 ->연산자로 pair 접근
+	cout << (*iter1).GetKey() << endl; // pair& 반환해서 ()로 묶어 pair& 가져오고 .연산자로 접근
 
 	return 0;
 }

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cassert>
+#include "Map.h"
 
 using std::cout;
 using std::endl;

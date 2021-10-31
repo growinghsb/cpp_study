@@ -174,13 +174,13 @@ private:
 	unsigned int mCount;
 
 	void DeleteNode(Node<KeyT, ValueT>* node, Node<KeyT, ValueT>* successor);
+	Node<KeyT, ValueT>* GetInOrederSuccessor(Node<KeyT, ValueT>& cNode);
 
 public:
 	MyMap();
 	~MyMap();
 
 	bool Insert(const MyPair<KeyT, ValueT>& pair);
-	Node<KeyT, ValueT>* GetInOrederSuccessor(Node<KeyT, ValueT>& cNode);
 
 	class Iterator;
 	MyMap<KeyT, ValueT>::Iterator begin();
@@ -202,7 +202,7 @@ public:
 		~Iterator();
 
 		MyMap<KeyT, ValueT>* GetMap() const;
-		Node<KeyT, ValueT>* GetNode() const;
+		Node<KeyT, ValueT>*  GetNode() const;
 		void SetMap(MyMap<KeyT, ValueT>* map);
 		void SetNode(Node<KeyT, ValueT>* node);
 

@@ -98,7 +98,6 @@ public:
 		멤버변수 = 매개변수 하는데 const 매개변수면 대입이 안된다.
 		멤버변수가 const 가 아니기 때문
 	*/
-
 };
 
 template<typename KeyT, typename ValueT>
@@ -116,7 +115,7 @@ inline Node<KeyT, ValueT>::~Node()
 }
 
 template<typename KeyT, typename ValueT>
-inline MyPair<KeyT, ValueT>* Node<KeyT, ValueT>::GetPair() // 여기 const 가 붙으면 & 반환이 안된다. 
+inline MyPair<KeyT, ValueT>* Node<KeyT, ValueT>::GetPair() // 여기 const 가 붙으면 &(포인터) 반환이 안된다. 
 														   // 변경 가능성이 있다고 생각하기 때문
 {
 	return &mPair;
@@ -202,14 +201,14 @@ public:
 		~Iterator();
 
 		MyMap<KeyT, ValueT>* GetMap() const;
-		Node<KeyT, ValueT>*  GetNode() const;
+		Node<KeyT, ValueT>* GetNode() const;
 		void SetMap(MyMap<KeyT, ValueT>* map);
 		void SetNode(Node<KeyT, ValueT>* node);
 
 		bool operator==(const MyMap<KeyT, ValueT>::Iterator& rhs) const;
 		bool operator!=(const MyMap<KeyT, ValueT>::Iterator& rhs) const;
-		const MyPair<KeyT, ValueT>* operator->() const;
-		const MyPair<KeyT, ValueT>& operator*() const;
+		MyPair<KeyT, ValueT>* operator->() const;
+		MyPair<KeyT, ValueT>& operator*() const;
 		MyMap<KeyT, ValueT>::Iterator& operator++();
 	};
 };
@@ -307,7 +306,7 @@ inline bool MyMap<KeyT, ValueT>::Iterator::operator!=(const MyMap<KeyT, ValueT>:
 }
 
 template<typename KeyT, typename ValueT>
-inline const MyPair<KeyT, ValueT>* MyMap<KeyT, ValueT>::Iterator::operator->() const
+inline MyPair<KeyT, ValueT>* MyMap<KeyT, ValueT>::Iterator::operator->() const
 {
 	assert(nullptr != mCNode);
 
@@ -315,7 +314,7 @@ inline const MyPair<KeyT, ValueT>* MyMap<KeyT, ValueT>::Iterator::operator->() c
 }
 
 template<typename KeyT, typename ValueT>
-inline const MyPair<KeyT, ValueT>& MyMap<KeyT, ValueT>::Iterator::operator*() const
+inline MyPair<KeyT, ValueT>& MyMap<KeyT, ValueT>::Iterator::operator*() const
 {
 	assert(nullptr != mCNode);
 
@@ -461,10 +460,7 @@ inline typename MyMap<KeyT, ValueT>::Iterator MyMap<KeyT, ValueT>::end()
 template<typename KeyT, typename ValueT>
 inline typename MyMap<KeyT, ValueT>::Iterator MyMap<KeyT, ValueT>::find(const KeyT& key)
 {
-	MyMap<KeyT, ValueT>::Iterator iter;
-	iter.SetMap(this);
-	iter.SetNode(nullptr);
-
+	MyMap<KeyT, ValueT>::Iterator iter(this, nullptr);
 	Node<KeyT, ValueT>* target = mRootNode;
 
 	while (nullptr != target)
@@ -474,7 +470,9 @@ inline typename MyMap<KeyT, ValueT>::Iterator MyMap<KeyT, ValueT>::find(const Ke
 			iter.SetNode(target);
 			break;
 		}
-		target->GetPair()->GetKey() < key ? target = target->GetRightChild() : target = target->GetLeftChild();
+		target->GetPair()->GetKey() < key ?
+			target = target->GetRightChild() :
+			target = target->GetLeftChild();
 	}
 	return iter;
 }
@@ -540,7 +538,7 @@ inline void MyMap<KeyT, ValueT>::DeleteNode(Node<KeyT, ValueT>* node, Node<KeyT,
 		{
 			successor->SetParent(parent);
 		}
-
+		
 		if (node->GetPair()->GetKey() < parent->GetPair()->GetKey())
 		{
 			parent->SetLeftChild(successor);

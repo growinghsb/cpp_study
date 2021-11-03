@@ -6,7 +6,10 @@ using std::cout;
 using std::endl;
 using std::boolalpha;
 
-int main(void) 
+template<typename T>
+void print(const ArrayList<T>& arr);
+
+int main(void)
 {
 	ArrayList<int> arr;
 	cout << arr.GetSize() << endl;
@@ -19,7 +22,7 @@ int main(void)
 	arr.PushBack(30);
 	arr.PushBack(40);
 	arr.PushBack(50);
-	
+
 	cout << arr.GetSize() << endl;
 	cout << arr.GetCapacity() << endl;
 
@@ -30,7 +33,7 @@ int main(void)
 	cout << arr.GetCapacity() << endl;
 
 	cout << endl;
-	
+
 	bool result = arr == copyArr;
 	cout << boolalpha << result << endl;
 
@@ -54,7 +57,7 @@ int main(void)
 	copyArr.PushBack(160);
 	cout << copyArr.GetSize() << endl;
 	cout << copyArr.GetCapacity() << endl;
-	
+
 	cout << endl;
 
 	copyArr.PushBack(170);
@@ -67,7 +70,7 @@ int main(void)
 	cout << "index 11: " << copyArr[11] << endl;
 	cout << "index 12: " << copyArr[12] << endl;
 	cout << "index 13: " << copyArr[13] << endl;
-	
+
 	cout << endl;
 
 	cout << "index 1: " << copyArr.Get(1) << endl;
@@ -82,8 +85,39 @@ int main(void)
 	cout << "copyArr == copyArr2: " << boolalpha << result << endl;
 
 	cout << endl;
+
 	result = copyArr != copyArr2;
 	cout << "copyArr != copyArr2: " << boolalpha << result << endl;
 
+	cout << endl;
+
+	result = arr == copyArr;
+	cout << "arr == copyArr: " << boolalpha << result << endl;
+
+	arr = copyArr;
+	result = arr == copyArr;
+	cout << "´ëÀÔ ÈÄ: arr == copyArr: " << boolalpha << result << endl;
+	print(copyArr);
+
+	copyArr.RemoveIndex(10);
+	copyArr.RemoveIndex(2);
+	copyArr.RemoveIndex(3);
+	copyArr.RemoveIndex(11);
+
+	print(copyArr);
+
+	cout << copyArr.GetSize() << endl;
+	cout << copyArr.GetCapacity() << endl;
+
 	return 0;
+}
+
+template<typename T>
+void print(const ArrayList<T>& arr)
+{
+	for (unsigned int i = 0; i < arr.GetSize(); i++)
+	{
+		cout << "[" << arr.Get(i) << "] ";
+	}
+	cout << endl;
 }

@@ -16,7 +16,9 @@ public:
 	virtual void		 Sort(void(*func)(void)) const = 0;
 
 	virtual unsigned int GetSize() const;
+	virtual void		 SetSize(const unsigned int size);
 	virtual void		 IncreaseSize();
+	virtual void		 DecreaseSize();
 
 };
 
@@ -44,7 +46,19 @@ inline unsigned int MyList<T>::GetSize() const
 }
 
 template<typename T>
+inline void MyList<T>::SetSize(const unsigned int size)
+{
+	mSize = size;
+}
+
+template<typename T>
 inline void MyList<T>::IncreaseSize()
 {
 	++mSize;
+}
+
+template<typename T>
+inline void MyList<T>::DecreaseSize()
+{
+	--mSize;
 }

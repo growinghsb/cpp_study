@@ -19,7 +19,7 @@ public:
 	virtual ~ArrayList();
 
 	virtual void         PushBack(const T& value);
-	void				 PushIndex(const unsigned int index);
+	void				 PushIndex(const T& value, const unsigned int index);
 	virtual void		 Remove(const T& value);
 	void				 RemoveIndex(const unsigned int index);
 	T					 Get(const unsigned int index) const;
@@ -28,9 +28,8 @@ public:
 	void				 Increase(const unsigned int capacity);
 	virtual void		 Sort(void(*func)(void)) const;
 
-	ArrayList<T>& operator=(const MyList<T>& other);
+	ArrayList<T>& operator=(const ArrayList<T>& other);
 	T& operator[](const unsigned int index);
-	bool  operator<(const ArrayList<T>& rhs) const;
 	bool  operator==(const ArrayList<T>& rhs) const;
 	bool  operator!=(const ArrayList<T>& rhs) const;
 };
@@ -83,8 +82,15 @@ inline void ArrayList<T>::PushBack(const T& value)
 }
 
 template<typename T>
-inline void ArrayList<T>::PushIndex(const unsigned int index)
+inline void ArrayList<T>::PushIndex(const T& value, const unsigned int index)
 {
+	if (mCapacity == this->GetSize())
+	{
+		Increase(mCapacity * 2);
+	}
+	*(mArr + this->GetSize()) = *(mArr + index);
+	*(mArr + index) = value;
+	this->IncreaseSize();
 }
 
 template<typename T>
@@ -95,12 +101,23 @@ inline void ArrayList<T>::Remove(const T& value)
 template<typename T>
 inline void ArrayList<T>::RemoveIndex(const unsigned int index)
 {
+	if (0 < this->GetSize())
+	{
+		*(mArr + index) = *(mArr + this->GetSize() - 1);
+		this->DecreaseSize();
+	}
 }
 
 template<typename T>
 inline T ArrayList<T>::Get(const unsigned int index) const
 {
 	return *(mArr + index);
+}
+
+template<typename T>
+inline void ArrayList<T>::Sort(void(*func)(void)) const
+{
+	func();
 }
 
 template<typename T>
@@ -135,27 +152,36 @@ inline void ArrayList<T>::Increase(const unsigned int capacity)
 }
 
 template<typename T>
-inline void ArrayList<T>::Sort(void(*func)(void)) const
+inline ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>& other)
 {
-	func();
-}
+	T* p = nullptr;
 
-template<typename T>
-inline ArrayList<T>& ArrayList<T>::operator=(const MyList<T>& other)
-{
-	// TODO: insert return statement here
+	if (mCapacity > other.mCapacity)
+	{
+		memset(mArr, 0, mCapacity);
+		p = mArr;
+	}
+	else
+	{
+		mCapacity = other.mCapacity;
+
+		delete[] mArr;
+		p = new T[mCapacity];
+		mArr = p;
+	}
+	this->SetSize(other.GetSize());
+
+	for (unsigned int i = 0; i < this->GetSize(); i++)
+	{
+		*(p + i) = *(other.mArr + i);
+	}
+	return *this;
 }
 
 template<typename T>
 inline T& ArrayList<T>::operator[](const unsigned int index)
 {
 	return *(mArr + index);
-}
-
-template<typename T>
-inline bool ArrayList<T>::operator<(const ArrayList<T>& rhs) const
-{
-	return false;
 }
 
 template<typename T>
@@ -176,6 +202,7 @@ inline bool ArrayList<T>::operator==(const ArrayList<T>& rhs) const
 	}
 	return true;
 }
+
 template<typename T>
 inline bool ArrayList<T>::operator!=(const ArrayList<T>& rhs) const
 {
@@ -194,5 +221,3 @@ inline bool ArrayList<T>::operator!=(const ArrayList<T>& rhs) const
 	}
 	return false;
 }
-
-

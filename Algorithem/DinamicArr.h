@@ -1,17 +1,21 @@
 #pragma once
 
+#include<cstring>
+#include<cassert>
+
 #include "List.h"
 
 template<typename T>
-class ArrayList : MyList<T> {
+class ArrayList : public MyList<T> {
 
 private:
+	T* mArr;
 	unsigned int mCapacity;
 
 public:
-			 ArrayList();
-			 ArrayList(const unsigned int capacity);
-			 ArrayList(const ArrayList<T>& other);
+	ArrayList();
+	ArrayList(const unsigned int capacity);
+	ArrayList(const ArrayList<T>& other);
 	virtual ~ArrayList();
 
 	virtual void         PushBack(const T& value);
@@ -21,15 +25,174 @@ public:
 	T					 Get(const unsigned int index) const;
 	bool				 Search(const T& value) const;
 	unsigned int		 GetCapacity() const;
-	virtual unsigned int GetSize() const;
 	void				 Increase(const unsigned int capacity);
-	virtual void		 Sort(void(func*)(void)) const;
+	virtual void		 Sort(void(*func)(void)) const;
 
 	ArrayList<T>& operator=(const MyList<T>& other);
-	virtual T&	  operator[](const unsigned int index) const;
-	virtual T&	  operator++();
-	virtual T&	  operator--();
-	virtual bool  operator<(const MyList<T>& rhs) const;
-	virtual bool  operator==(const MyList<T>& rhs) const;
-	virtual bool  operator!=(const MyList<T>& rhs) const;
+	T& operator[](const unsigned int index);
+	bool  operator<(const ArrayList<T>& rhs) const;
+	bool  operator==(const ArrayList<T>& rhs) const;
+	bool  operator!=(const ArrayList<T>& rhs) const;
 };
+
+template<typename T>
+inline ArrayList<T>::ArrayList()
+	: mCapacity(16)
+{
+	mArr = new T[mCapacity];
+	memset(mArr, 0, mCapacity);
+}
+
+template<typename T>
+inline ArrayList<T>::ArrayList(const unsigned int capacity)
+	: mCapacity(capacity)
+{
+	mArr = new T[mCapacity];
+	memset(mArr, 0, mCapacity);
+}
+
+template<typename T>
+inline ArrayList<T>::ArrayList(const ArrayList<T>& other)
+	: MyList<T>(other.GetSize())
+	, mCapacity(other.mCapacity)
+{
+	mArr = new T[mCapacity];
+	T* tmp = mArr;
+
+	for (unsigned int i = 0; i < this->GetSize(); ++i)
+	{
+		*(tmp + i) = *(other.mArr + i);
+	}
+}
+
+template<typename T>
+inline ArrayList<T>::~ArrayList()
+{
+	delete[] mArr;
+}
+
+template<typename T>
+inline void ArrayList<T>::PushBack(const T& value)
+{
+	if (mCapacity == this->GetSize())
+	{
+		Increase(mCapacity * 2);
+	}
+	*(mArr + this->GetSize()) = value;
+	this->IncreaseSize();
+}
+
+template<typename T>
+inline void ArrayList<T>::PushIndex(const unsigned int index)
+{
+}
+
+template<typename T>
+inline void ArrayList<T>::Remove(const T& value)
+{
+}
+
+template<typename T>
+inline void ArrayList<T>::RemoveIndex(const unsigned int index)
+{
+}
+
+template<typename T>
+inline T ArrayList<T>::Get(const unsigned int index) const
+{
+	return *(mArr + index);
+}
+
+template<typename T>
+inline bool ArrayList<T>::Search(const T& value) const
+{
+	return false;
+}
+
+template<typename T>
+inline unsigned int ArrayList<T>::GetCapacity() const
+{
+	return mCapacity;
+}
+
+template<typename T>
+inline void ArrayList<T>::Increase(const unsigned int capacity)
+{
+	if (mCapacity < capacity)
+	{
+		mCapacity = capacity;
+
+		T* p = new T[mCapacity];
+		T* tmp = p;
+
+		for (unsigned int i = 0; i < this->GetSize(); i++)
+		{
+			*(tmp + i) = *(mArr + i);
+		}
+		delete[] mArr;
+		mArr = p;
+	}
+}
+
+template<typename T>
+inline void ArrayList<T>::Sort(void(*func)(void)) const
+{
+	func();
+}
+
+template<typename T>
+inline ArrayList<T>& ArrayList<T>::operator=(const MyList<T>& other)
+{
+	// TODO: insert return statement here
+}
+
+template<typename T>
+inline T& ArrayList<T>::operator[](const unsigned int index)
+{
+	return *(mArr + index);
+}
+
+template<typename T>
+inline bool ArrayList<T>::operator<(const ArrayList<T>& rhs) const
+{
+	return false;
+}
+
+template<typename T>
+inline bool ArrayList<T>::operator==(const ArrayList<T>& rhs) const
+{
+	unsigned int size = this->GetSize();
+	if (size != rhs.GetSize())
+	{
+		return false;
+	}
+
+	for (unsigned int i = 0; i < size; i++)
+	{
+		if (*(mArr + i) != *(rhs.mArr + i))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+template<typename T>
+inline bool ArrayList<T>::operator!=(const ArrayList<T>& rhs) const
+{
+	unsigned int size = this->GetSize();
+	if (size != rhs.GetSize())
+	{
+		return true;
+	}
+
+	for (unsigned int i = 0; i < size; i++)
+	{
+		if (*(mArr + i) != *(rhs.mArr + i))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+

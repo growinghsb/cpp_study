@@ -3,24 +3,21 @@
 template<typename T>
 class MyList {
 
-protected:
+private:
 	unsigned int mSize;
 
 public:
-			 MyList();
+	MyList();
+	MyList(const unsigned int size);
 	virtual ~MyList();
 
 	virtual void         PushBack(const T& value) = 0;
 	virtual void		 Remove(const T& value) = 0;
-	virtual unsigned int GetSize() const = 0;
-	virtual void		 Sort(void(func*)(void)) const = 0;
+	virtual void		 Sort(void(*func)(void)) const = 0;
 
-	virtual T&	 operator[](const unsigned int index) const = 0;
-	virtual T&   operator++() = 0;
-	virtual T&   operator--() = 0;
-	virtual bool operator<(const MyList<T>& rhs) const = 0;
-	virtual bool operator==(const MyList<T>& rhs) const = 0;
-	virtual bool operator!=(const MyList<T>& rhs) const = 0;
+	virtual unsigned int GetSize() const;
+	virtual void		 IncreaseSize();
+
 };
 
 template<typename T>
@@ -30,6 +27,24 @@ inline MyList<T>::MyList()
 }
 
 template<typename T>
+inline MyList<T>::MyList(const unsigned int size)
+	: mSize(size)
+{
+}
+
+template<typename T>
 inline MyList<T>::~MyList()
 {
+}
+
+template<typename T>
+inline unsigned int MyList<T>::GetSize() const
+{
+	return mSize;
+}
+
+template<typename T>
+inline void MyList<T>::IncreaseSize()
+{
+	++mSize;
 }

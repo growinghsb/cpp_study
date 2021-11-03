@@ -12,7 +12,7 @@ using std::pair;
 template<typename KeyT, typename ValueT>
 void printMap(MyMap<KeyT, ValueT> map, typename MyMap<KeyT, ValueT>::Iterator iter);
 
-int main(void) {
+int mainMap(void) {
 	srand(static_cast<int>(time(0)));
 
 	map<int, int> m;

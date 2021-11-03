@@ -28,6 +28,9 @@
     <Filter Include="BinarySearchTree">
       <UniqueIdentifier>{c745161e-644b-460b-b51e-d3d6704ce079}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CMyList">
+      <UniqueIdentifier>{729ff505-a220-4014-8b83-e6607ac324ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Practice1.cpp">
@@ -87,6 +90,9 @@
     <ClCompile Include="MapMain.cpp">
       <Filter>BinarySearchTree</Filter>
     </ClCompile>
+    <ClCompile Include="MyListMain.cpp">
+      <Filter>CMyList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">
@@ -103,6 +109,12 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>BinarySearchTree</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>CMyList</Filter>
+    </ClInclude>
+    <ClInclude Include="DinamicArr.h">
+      <Filter>CMyList</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

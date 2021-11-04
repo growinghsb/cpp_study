@@ -93,6 +93,9 @@
     <ClCompile Include="MyListMain.cpp">
       <Filter>CMyList</Filter>
     </ClCompile>
+    <ClCompile Include="SortPra.cpp">
+      <Filter>CMyList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">

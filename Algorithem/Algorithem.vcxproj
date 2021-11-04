@@ -159,6 +159,7 @@
     <ClCompile Include="Practice2.cpp" />
     <ClCompile Include="Practice3.cpp" />
     <ClCompile Include="Practice4.cpp" />
+    <ClCompile Include="SortPra.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h" />

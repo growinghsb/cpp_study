@@ -24,6 +24,8 @@ void InsertionSort(int* arr, unsigned int size);
 void MergeSort(int* arr, int start, int end);
 void Merge(int* arr, int start, int mid, int end);
 
+void QuickSort(int* arr, int start, int end);
+
 void print(int* arr, unsigned int size);
 
 int main(void)
@@ -33,13 +35,12 @@ int main(void)
 	// BubbleSort(arr, SIZE);    구현 완료 O(n * n)
 	// SelectionSort(arr, SIZE); 구현 완료 O(n * n)
 	// InsertionSort(arr, SIZE); 구현 완료 O(n * n)
-	MergeSort(arr, 0, SIZE - 1);
+	// MergeSort(arr, 0, SIZE - 1); 구현 완료 O(n * logN)
+	// QuickSort(arr, 0, SIZE - 1); 구현 완료 O(n * logN)
 	print(arr, SIZE);
 
 	return 0;
 }
-
-
 
 void Swap(int& max, int& min)
 {
@@ -119,21 +120,21 @@ void Merge(int* arr, int start, int mid, int end)
 	int part2 = mid + 1;
 	int sortedIndex = start;
 
- 	while (part1 <= mid && part2 <= end)
+	while (part1 <= mid && part2 <= end)
 	{
 		if (*(arr + part1) < *(arr + part2))
 		{
 			sorted[sortedIndex++] = *(arr + part1);
 			++part1;
 		}
-		else 
+		else
 		{
 			sorted[sortedIndex++] = *(arr + part2);
 			++part2;
 		}
 	}
-	
-	if (part1 > mid) 
+
+	if (part1 > mid)
 	{
 		for (int i = part2; i < end + 1; i++)
 		{
@@ -151,6 +152,45 @@ void Merge(int* arr, int start, int mid, int end)
 	for (int i = start; i < end + 1; i++)
 	{
 		*(arr + i) = *(sorted + i);
+	}
+}
+
+void QuickSort(int* arr, int start, int end)
+{
+	if (start < end) 
+	{
+		int pivot = start; // 피벗값을 첫 번째 값으로 설정
+		int s = start + 1;
+		int e = end;
+		int tmp;
+
+		while (s <= e) // start index 가 end index 보다 작거나 같을 때 까지만 반복 수행, 엊갈리면 종료 
+		{
+			while (*(arr + s) <= *(arr + pivot) && s < end)
+			{
+				++s;
+			}
+
+			while (*(arr + e) >= *(arr + pivot) && e > start)
+			{
+				--e;
+			}
+
+			if (s > e)
+			{
+				tmp = *(arr + e);
+				*(arr + e) = *(arr + pivot);
+				*(arr + pivot) = tmp;
+			}
+			else
+			{
+				tmp = *(arr + s);
+				*(arr + s) = *(arr + e);
+				*(arr + e) = tmp;
+			}
+		}
+		QuickSort(arr, start, e);
+		QuickSort(arr, e + 1, end);
 	}
 }
 

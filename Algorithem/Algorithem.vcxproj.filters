@@ -96,6 +96,9 @@
     <ClCompile Include="SortPra.cpp">
       <Filter>CMyList</Filter>
     </ClCompile>
+    <ClCompile Include="11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">

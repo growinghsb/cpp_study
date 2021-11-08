@@ -13,7 +13,6 @@ public:
 
 	virtual void         PushBack(const T& value) = 0;
 	virtual void		 Remove(const T& value) = 0;
-	virtual void		 Sort(void(*func)(void)) const = 0;
 
 	virtual unsigned int GetSize() const;
 	virtual void		 SetSize(const unsigned int size);

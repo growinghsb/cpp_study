@@ -9,7 +9,10 @@ using std::boolalpha;
 template<typename T>
 void print(const ArrayList<T>& arr);
 
-int mainArrlist(void)
+template<typename T>
+void QuickSort(T* arr, int start, int end);
+
+int main(void)
 {
 	ArrayList<int> arr;
 	cout << arr.GetSize() << endl;
@@ -103,11 +106,24 @@ int mainArrlist(void)
 	copyArr.RemoveIndex(2);
 	copyArr.RemoveIndex(3);
 	copyArr.RemoveIndex(11);
+	copyArr.RemoveIndex(5);
+	copyArr.RemoveIndex(9);
+	copyArr.RemoveIndex(7);
 
 	print(copyArr);
 
-	cout << copyArr.GetSize() << endl;
-	cout << copyArr.GetCapacity() << endl;
+	cout << endl;
+	cout << "삭제 후" << endl;
+	cout << "size: " << copyArr.GetSize() << endl;
+	cout << "capacity: " << copyArr.GetCapacity() << endl;
+	print(copyArr);
+
+	cout << endl;
+
+	copyArr.Sort(QuickSort);
+
+	cout << "정렬 후" << endl;
+	print(copyArr);
 
 	return 0;
 }
@@ -120,4 +136,50 @@ void print(const ArrayList<T>& arr)
 		cout << "[" << arr.Get(i) << "] ";
 	}
 	cout << endl;
+}
+
+template<typename T>
+void QuickSort(T* arr, int start, int end)
+{
+	if (start < end)
+	{
+		int pivot = start;
+		int s = start + 1;
+		int e = end;
+		int tmp;
+
+		while (s <= e)
+		{
+			while (*(arr + s) <= *(arr + pivot) && s < end)
+			{
+				++s;
+			}
+
+			while (*(arr + e) >= *(arr + pivot) && e > start)
+			{
+				--e;
+			}
+
+			if (s > e)
+			{
+				tmp = *(arr + e);
+				*(arr + e) = *(arr + pivot);
+				*(arr + pivot) = tmp;
+			}
+			else
+			{
+				tmp = *(arr + s);
+				*(arr + s) = *(arr + e);
+				*(arr + e) = tmp;
+			}
+		}
+		for (unsigned int i = 0; i < end + 1; i++)
+		{
+			cout << "[" << *(arr + i) << "] ";
+		}
+		cout << endl;
+
+		QuickSort(arr, start, e);
+		QuickSort(arr, e + 1, end);
+	}
 }

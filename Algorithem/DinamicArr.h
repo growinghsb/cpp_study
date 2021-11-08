@@ -26,7 +26,9 @@ public:
 	bool				 Search(const T& value) const;
 	unsigned int		 GetCapacity() const;
 	void				 Increase(const unsigned int capacity);
-	virtual void		 Sort(void(*func)(void)) const;
+	void			     Sort(void(*func)(T*, int, int));
+
+	T* GetArr();
 
 	ArrayList<T>& operator=(const ArrayList<T>& other);
 	T& operator[](const unsigned int index);
@@ -115,9 +117,15 @@ inline T ArrayList<T>::Get(const unsigned int index) const
 }
 
 template<typename T>
-inline void ArrayList<T>::Sort(void(*func)(void)) const
+inline void ArrayList<T>::Sort(void(*func)(T*, int, int))
 {
-	func();
+	func(mArr, 0, this->GetSize() - 1);
+}
+
+template<typename T>
+inline T* ArrayList<T>::GetArr()
+{
+	return mArr;
 }
 
 template<typename T>

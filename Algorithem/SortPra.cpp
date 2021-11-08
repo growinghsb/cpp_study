@@ -28,7 +28,7 @@ void QuickSort(int* arr, int start, int end);
 
 void print(int* arr, unsigned int size);
 
-int main(void)
+int mainSort(void)
 {
 	int arr[SIZE] = { 10, 4, 8, 5, 6, 9, 13, 2 };
 

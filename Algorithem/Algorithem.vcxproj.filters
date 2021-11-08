@@ -33,16 +33,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Practice1.cpp">
+    <ClCompile Include="1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Practice2.cpp">
+    <ClCompile Include="2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Practice3.cpp">
+    <ClCompile Include="3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Practice4.cpp">
+    <ClCompile Include="4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="5.cpp">

@@ -10,7 +10,7 @@ using std::boolalpha;
 template<typename T>
 void print(const ArrayList<T>& arr);
 
-int main(void)
+int mainMy(void)
 {
 	ArrayList<int> arr;
 	cout << arr.GetSize() << endl;

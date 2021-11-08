@@ -155,10 +155,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapMain.cpp" />
     <ClCompile Include="MyListMain.cpp" />
-    <ClCompile Include="Practice1.cpp" />
-    <ClCompile Include="Practice2.cpp" />
-    <ClCompile Include="Practice3.cpp" />
-    <ClCompile Include="Practice4.cpp" />
+    <ClCompile Include="1.cpp" />
+    <ClCompile Include="2.cpp" />
+    <ClCompile Include="3.cpp" />
+    <ClCompile Include="4.cpp" />
     <ClCompile Include="SortPra.cpp" />
   </ItemGroup>
   <ItemGroup>

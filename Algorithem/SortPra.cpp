@@ -32,11 +32,11 @@ int mainSort(void)
 {
 	int arr[SIZE] = { 10, 4, 8, 5, 6, 9, 13, 2 };
 
-	// BubbleSort(arr, SIZE);    구현 완료 O(n * n)
-	// SelectionSort(arr, SIZE); 구현 완료 O(n * n)
-	// InsertionSort(arr, SIZE); 구현 완료 O(n * n)
-	// MergeSort(arr, 0, SIZE - 1); 구현 완료 O(n * logN)
-	// QuickSort(arr, 0, SIZE - 1); 구현 완료 O(n * logN)
+	// BubbleSort(arr, SIZE);    // 구현 완료 O(n * n)
+	// SelectionSort(arr, SIZE); // 구현 완료 O(n * n)
+	// InsertionSort(arr, SIZE); // 구현 완료 O(n * n)
+   // MergeSort(arr, 0, SIZE - 1); 구현 완료 O(n * logN)
+	QuickSort(arr, 0, SIZE - 1); // 구현 완료 O(n * logN)
 	print(arr, SIZE);
 
 	return 0;
@@ -157,7 +157,7 @@ void Merge(int* arr, int start, int mid, int end)
 
 void QuickSort(int* arr, int start, int end)
 {
-	if (start < end) 
+	if (start < end)
 	{
 		int pivot = start; // 피벗값을 첫 번째 값으로 설정
 		int s = start + 1;

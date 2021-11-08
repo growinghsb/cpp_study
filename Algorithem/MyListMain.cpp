@@ -30,8 +30,8 @@ int main(void)
 	cout << endl;
 
 	ArrayList<int> copyArr(arr);
-	cout << arr.GetSize() << endl;
-	cout << arr.GetCapacity() << endl;
+	cout << copyArr.GetSize() << endl;
+	cout << copyArr.GetCapacity() << endl;
 
 	cout << endl;
 

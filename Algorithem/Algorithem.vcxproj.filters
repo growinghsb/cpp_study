@@ -119,5 +119,8 @@
     <ClInclude Include="DinamicArr.h">
       <Filter>CMyList</Filter>
     </ClInclude>
+    <ClInclude Include="Sorted.h">
+      <Filter>CMyList</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

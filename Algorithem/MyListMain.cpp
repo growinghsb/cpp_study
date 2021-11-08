@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "DinamicArr.h"
+#include "Sorted.h"
 
 using std::cout;
 using std::endl;
@@ -8,9 +9,6 @@ using std::boolalpha;
 
 template<typename T>
 void print(const ArrayList<T>& arr);
-
-template<typename T>
-void QuickSort(T* arr, int start, int end);
 
 int main(void)
 {
@@ -125,6 +123,25 @@ int main(void)
 	cout << "정렬 후" << endl;
 	print(copyArr);
 
+	cout << endl;
+	result = copyArr.Search(150);
+	cout << "150 이 있나? " << boolalpha << result << endl;
+	result = copyArr.Search(120);
+	cout << "120 이 있나? " << boolalpha << result << endl;
+	result = copyArr.Search(70);
+	cout << "70 이 있나? " << boolalpha << result << endl;
+	result = copyArr.Search(20);
+	cout << "20 이 있나? " << boolalpha << result << endl;
+	result = copyArr.Search(110);
+	cout << "110 이 있나? " << boolalpha << result << endl;
+	result = copyArr.Search(10);
+	cout << "10 이 있나? " << boolalpha << result << endl;
+	result = copyArr.Search(170);
+	cout << "170 이 있나? " << boolalpha << result << endl;
+	result = copyArr.Search(90);
+	cout << "90 이 있나? " << boolalpha << result << endl;
+
+
 	return 0;
 }
 
@@ -173,12 +190,6 @@ void QuickSort(T* arr, int start, int end)
 				*(arr + e) = tmp;
 			}
 		}
-		for (unsigned int i = 0; i < end + 1; i++)
-		{
-			cout << "[" << *(arr + i) << "] ";
-		}
-		cout << endl;
-
 		QuickSort(arr, start, e);
 		QuickSort(arr, e + 1, end);
 	}

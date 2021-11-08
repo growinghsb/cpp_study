@@ -4,6 +4,7 @@
 #include<cassert>
 
 #include "List.h"
+#include "Sorted.h"
 
 template<typename T>
 class ArrayList : public MyList<T> {
@@ -23,7 +24,7 @@ public:
 	virtual void		 Remove(const T& value);
 	void				 RemoveIndex(const unsigned int index);
 	T					 Get(const unsigned int index) const;
-	bool				 Search(const T& value) const;
+	bool				 Search(const T& value);
 	unsigned int		 GetCapacity() const;
 	void				 Increase(const unsigned int capacity);
 	void			     Sort(void(*func)(T*, int, int));
@@ -129,8 +130,30 @@ inline T* ArrayList<T>::GetArr()
 }
 
 template<typename T>
-inline bool ArrayList<T>::Search(const T& value) const
+inline bool ArrayList<T>::Search(const T& value)
 {
+	Sort(QuickSort);
+
+	int start = 0;
+	int end = this->GetSize();
+
+	while (start <= end)
+	{
+		int mid = (end + start) / 2;
+
+		if (*(mArr + mid) < value)
+		{
+			start = mid + 1;
+		}
+		else if (*(mArr + mid) > value)
+		{
+			end = mid - 1;
+		}
+		else
+		{
+			return true;
+		}
+	}
 	return false;
 }
 

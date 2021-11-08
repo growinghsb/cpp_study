@@ -123,24 +123,31 @@ int main(void)
 	cout << "정렬 후" << endl;
 	print(copyArr);
 
+	int re;
 	cout << endl;
-	result = copyArr.Search(150);
-	cout << "150 이 있나? " << boolalpha << result << endl;
-	result = copyArr.Search(120);
-	cout << "120 이 있나? " << boolalpha << result << endl;
-	result = copyArr.Search(70);
-	cout << "70 이 있나? " << boolalpha << result << endl;
-	result = copyArr.Search(20);
-	cout << "20 이 있나? " << boolalpha << result << endl;
-	result = copyArr.Search(110);
-	cout << "110 이 있나? " << boolalpha << result << endl;
-	result = copyArr.Search(10);
-	cout << "10 이 있나? " << boolalpha << result << endl;
-	result = copyArr.Search(170);
-	cout << "170 이 있나? " << boolalpha << result << endl;
-	result = copyArr.Search(90);
-	cout << "90 이 있나? " << boolalpha << result << endl;
+	re = copyArr.Search(150);
+	cout << "150 이 있나? " << re << endl;
+	re = copyArr.Search(120);
+	cout << "120 이 있나? " << re << endl;
+	re = copyArr.Search(70);
+	cout << "70 이 있나? " << re << endl;
+	re = copyArr.Search(20);
+	cout << "20 이 있나? " << re << endl;
+	re = copyArr.Search(110);
+	cout << "110 이 있나? " << re << endl;
+	re = copyArr.Search(10);
+	cout << "10 이 있나? " << re << endl;
+	re = copyArr.Search(170);
+	cout << "170 이 있나? " << re << endl;
+	re = copyArr.Search(90);
+	cout << "90 이 있나? " << re << endl;
 
+	copyArr.Remove(10);
+	cout << endl;
+	cout << "삭제 후" << endl;
+	cout << "size: " << copyArr.GetSize() << endl;
+	cout << "capacity: " << copyArr.GetCapacity() << endl;
+	print(copyArr);
 
 	return 0;
 }

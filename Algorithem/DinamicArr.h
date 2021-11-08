@@ -21,10 +21,10 @@ public:
 
 	virtual void         PushBack(const T& value);
 	void				 PushIndex(const T& value, const unsigned int index);
-	virtual void		 Remove(const T& value);
+	virtual bool		 Remove(const T& value);
 	void				 RemoveIndex(const unsigned int index);
 	T					 Get(const unsigned int index) const;
-	bool				 Search(const T& value);
+	int			 		 Search(const T& value);
 	unsigned int		 GetCapacity() const;
 	void				 Increase(const unsigned int capacity);
 	void			     Sort(void(*func)(T*, int, int));
@@ -97,8 +97,16 @@ inline void ArrayList<T>::PushIndex(const T& value, const unsigned int index)
 }
 
 template<typename T>
-inline void ArrayList<T>::Remove(const T& value)
+inline bool ArrayList<T>::Remove(const T& value)
 {
+	int index = Search(value);
+	
+	if (-1 != index) 
+	{
+		RemoveIndex(index);
+		return true;
+	}
+	return false;
 }
 
 template<typename T>
@@ -130,7 +138,7 @@ inline T* ArrayList<T>::GetArr()
 }
 
 template<typename T>
-inline bool ArrayList<T>::Search(const T& value)
+inline int ArrayList<T>::Search(const T& value)
 {
 	Sort(QuickSort);
 
@@ -151,10 +159,10 @@ inline bool ArrayList<T>::Search(const T& value)
 		}
 		else
 		{
-			return true;
+			return mid;
 		}
 	}
-	return false;
+	return -1;
 }
 
 template<typename T>

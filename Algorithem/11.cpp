@@ -12,7 +12,7 @@
 using std::cout;
 using std::cin;
 
-int main(void)
+int main11(void)
 {
 	int num;
 	cin >> num;

@@ -151,6 +151,7 @@
     <ClCompile Include="Arr.cpp" />
     <ClCompile Include="CArr.cpp" />
     <ClCompile Include="CArrMain.cpp" />
+    <ClCompile Include="GetMinMaxMain.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedMain.cpp" />
     <ClCompile Include="ListMain.cpp" />

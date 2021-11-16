@@ -25,7 +25,7 @@ int main10(void)
 
 	cin >> count;
 
-	for (unsigned int i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)
 	{
 		cin >> num;
 		int tmp = digit_sum(num);

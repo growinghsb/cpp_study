@@ -2,7 +2,7 @@
 
 void GetMinMax(unsigned int length, int* arr, int* min, int* max);
 
-int main()
+int mainGet()
 {
 	int minMaxArr[] = { 10, 3, 47, 5, 8, 2, 32, 16, 9 };
 

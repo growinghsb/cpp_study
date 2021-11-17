@@ -163,6 +163,7 @@
     <ClCompile Include="3.cpp" />
     <ClCompile Include="4.cpp" />
     <ClCompile Include="SortPra.cpp" />
+    <ClCompile Include="StrReverse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h" />

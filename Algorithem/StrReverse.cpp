@@ -8,7 +8,7 @@ void GetLength(const char* chArr, unsigned int* outLength);
 void Reverse(char* chArr, const unsigned int length);
 void PrintStr(const char* chArr);
 
-int main()
+int mainStrRe()
 {
 	const unsigned int ARR_LENGTH = 100;
 	char chArr[ARR_LENGTH] = {};

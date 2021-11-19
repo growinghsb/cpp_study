@@ -175,8 +175,8 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="QuickEx.h" />
     <ClInclude Include="Sorted.h" />
+    <ClInclude Include="Sorts.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

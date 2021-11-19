@@ -140,7 +140,7 @@
     <ClInclude Include="Sorted.h">
       <Filter>CMyList</Filter>
     </ClInclude>
-    <ClInclude Include="QuickEx.h">
+    <ClInclude Include="Sorts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

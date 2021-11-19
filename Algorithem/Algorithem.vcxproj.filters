@@ -111,6 +111,9 @@
     <ClCompile Include="Sorts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QuickEx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="Sorted.h">
       <Filter>CMyList</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickEx.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

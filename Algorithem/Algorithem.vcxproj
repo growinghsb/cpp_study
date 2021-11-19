@@ -162,6 +162,7 @@
     <ClCompile Include="2.cpp" />
     <ClCompile Include="3.cpp" />
     <ClCompile Include="4.cpp" />
+    <ClCompile Include="QuickEx.cpp" />
     <ClCompile Include="SortPra.cpp" />
     <ClCompile Include="Sorts.cpp" />
     <ClCompile Include="StrReverse.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="QuickEx.h" />
     <ClInclude Include="Sorted.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

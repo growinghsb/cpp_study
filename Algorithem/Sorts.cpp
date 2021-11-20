@@ -9,6 +9,7 @@
 */
 
 #include "Sorts.h" // 필요한 선언들이 있는 헤더파일
+#include "MyStack.h" // 내가 만든 스택 구조체 헤더파일
 
 int main()
 {
@@ -146,6 +147,11 @@ void QuickDivide(int* arr, int start, int end)
 		QuickDivide(arr, start, endIdx - 1);
 		QuickDivide(arr, endIdx + 1, end);
 	}
+}
+
+void QuickSortLoop(int* arr, const int length)
+{
+
 }
 
 void Swap(int* v1, int* v2)

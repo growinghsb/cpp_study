@@ -31,6 +31,9 @@
     <Filter Include="CMyList">
       <UniqueIdentifier>{729ff505-a220-4014-8b83-e6607ac324ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\MyStack">
+      <UniqueIdentifier>{3b3e568e-50e3-43ba-9d94-61f22eb08ba6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1.cpp">
@@ -114,6 +117,9 @@
     <ClCompile Include="QuickEx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MyStack.cpp">
+      <Filter>Source Files\MyStack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">
@@ -142,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="Sorts.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyStack.h">
+      <Filter>Source Files\MyStack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

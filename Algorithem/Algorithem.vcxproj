@@ -162,6 +162,7 @@
     <ClCompile Include="2.cpp" />
     <ClCompile Include="3.cpp" />
     <ClCompile Include="4.cpp" />
+    <ClCompile Include="MyStack.cpp" />
     <ClCompile Include="QuickEx.cpp" />
     <ClCompile Include="SortPra.cpp" />
     <ClCompile Include="Sorts.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MyStack.h" />
     <ClInclude Include="Sorted.h" />
     <ClInclude Include="Sorts.h" />
   </ItemGroup>

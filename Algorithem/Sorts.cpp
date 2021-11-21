@@ -155,7 +155,7 @@ void QuickDivide(int* arr, int start, int end)
 
 void QuickSortLoop(int* arr, int length)
 {
-	static STACK stack;
+	STACK stack;
 
 	int pivot = 0;
 	int start = 0;

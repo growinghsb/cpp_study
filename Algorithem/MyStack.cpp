@@ -4,7 +4,7 @@
 
 MyStack::MyStack()
 	: mData(nullptr)
-	, mCapacity(2)
+	, mCapacity(4)
 	, mSize(0)
 {
 	mData = (int*)malloc(sizeof(int) * mCapacity);

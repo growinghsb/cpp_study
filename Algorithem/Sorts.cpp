@@ -9,7 +9,6 @@
 */
 
 #include "Sorts.h" // 필요한 선언들이 있는 헤더파일
-#include "MyStack.h" // 내가 만든 스택 구조체 헤더파일
 
 int main()
 {
@@ -35,6 +34,11 @@ int main()
 	ArraySetting(arr, LENGTH);
 	QuickSortRecursive(arr, LENGTH);
 	PrintArray(arr, LENGTH, "Quick Sort Recursive");
+
+	/* Quick Sort Loop*/
+	ArraySetting(arr, LENGTH);
+	QuickSortLoop(arr, LENGTH);
+	PrintArray(arr, LENGTH, "Quick Sort Loop");
 
 	return 0;
 }
@@ -149,9 +153,66 @@ void QuickDivide(int* arr, int start, int end)
 	}
 }
 
-void QuickSortLoop(int* arr, const int length)
+void QuickSortLoop(int* arr, int length)
 {
+	static STACK stack;
 
+	int pivot = 0;
+	int start = 0;
+	int end = 0;
+
+	while (true)
+	{
+		if (0 == stack.GetSize())
+		{
+			start = 0;
+			end = length - 1;
+		}
+		else
+		{
+			end = stack.Pop();
+			start = stack.Pop();
+		}
+
+		if (start < end)
+		{
+			int pivot = start;
+			int left = start + 1;
+			int right = end;
+
+			while (left < right)
+			{
+				while (*(arr + left) <= *(arr + pivot) && left < end)
+				{
+					++left;
+				}
+				while (*(arr + right) >= *(arr + pivot) && right > start)
+				{
+					--right;
+				}
+
+				if (left < right)
+				{
+					Swap(arr + left, arr + right);
+				}
+				else
+				{
+					Swap(arr + right, arr + pivot);
+				}
+			}
+			stack.Add(right + 1);
+			stack.Add(end);
+			stack.Add(start);
+			stack.Add(right - 1);
+		}
+		else
+		{
+			if (0 == stack.GetSize())
+			{
+				break;
+			}
+		}
+	}
 }
 
 void Swap(int* v1, int* v2)

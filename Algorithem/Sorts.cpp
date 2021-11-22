@@ -95,15 +95,13 @@ void InsertionSort(int* arr, const int length)
 {
 	for (int i = 1; i < length; ++i)
 	{
-		int targetIndex = i;
-
 		for (int j = 0; j < i; ++j)
 		{
-			if (*(arr + targetIndex) < *(arr + j))
+			if (*(arr + i) < *(arr + j))
 			{
-				int targetIndexValue = *(arr + targetIndex);
+				int targetIndexValue = *(arr + i);
 
-				for (int k = targetIndex - 1; k >= j; --k)
+				for (int k = i - 1; k >= j; --k)
 				{
 					*(arr + k + 1) = *(arr + k);
 				}
@@ -113,6 +111,7 @@ void InsertionSort(int* arr, const int length)
 		}
 	}
 }
+
 
 void QuickSortRecursive(int* arr, const int length)
 {
@@ -127,7 +126,7 @@ void QuickDivide(int* arr, int start, int end)
 		int startIdx = start + 1;
 		int endIdx = end;
 
-		while (startIdx < endIdx)
+		while (startIdx <= endIdx)
 		{
 			while (*(arr + startIdx) <= *(arr + pivotIdx) && startIdx < end)
 			{
@@ -180,7 +179,7 @@ void QuickSortLoop(int* arr, int length)
 			int left = start + 1;
 			int right = end;
 
-			while (left < right)
+			while (left <= right)
 			{
 				while (*(arr + left) <= *(arr + pivot) && left < end)
 				{

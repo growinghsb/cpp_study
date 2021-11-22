@@ -120,6 +120,9 @@
     <ClCompile Include="MyStack.cpp">
       <Filter>Source Files\MyStack</Filter>
     </ClCompile>
+    <ClCompile Include="Temp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">

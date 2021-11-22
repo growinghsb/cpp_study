@@ -59,11 +59,6 @@ void Sort(const int* arr, unsigned int count, void(*pOrder)(const int* pData, co
 	pOrder(arr, count);
 }
 
-
-
-
-
-
 void print(const arr_t* arr)
 {
 	for (unsigned int i = 0; i < arr->iCount; i++)

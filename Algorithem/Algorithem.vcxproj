@@ -153,6 +153,7 @@
     <ClCompile Include="CArrMain.cpp" />
     <ClCompile Include="GetMinMaxMain.cpp" />
     <ClCompile Include="HomewordList.cpp" />
+    <ClCompile Include="HomeWork1129.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedMain.cpp" />
     <ClCompile Include="ListMain.cpp" />

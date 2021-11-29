@@ -111,7 +111,7 @@ void PopBack(List* list)
 	--list->count;
 }
 
-int main()
+int mainHomeWork1()
 {
 	List list = {};
 
@@ -125,8 +125,6 @@ int main()
 	PushBack(&list, 200);
 
 	PopBack(&list);
-
-	Delete(&list);
 
 	return 0;
 }

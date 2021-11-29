@@ -10,7 +10,7 @@
 
 #include "Sorts.h" // 필요한 선언들이 있는 헤더파일
 
-int main()
+int mainSorts()
 {
 	const unsigned int LENGTH = 10;
 	int arr[LENGTH] = {};

@@ -1,7 +1,10 @@
 #include <iostream>
 #include <ctime>
+#include <cassert>
 
 using std::cout;
+using std::cin;
+using std::endl;
 
 static void Swap(int* v1, int* v2)
 {
@@ -67,23 +70,22 @@ void InsertSort(int* _pArr, int _iLen, int _iWay)
 
 int mainTemp()
 {
-	srand((unsigned int)time(0));
+	int num;
+	cin >> num;
 
-	/*int tmp[100] = {};
-	for (unsigned int i = 0; i < 100; ++i)
+	for (int i = 2; i <= num; i++)
 	{
-		*(tmp + i) = rand() % 1000;
-	}*/
-
-	//QuickSort(tmp, 0, 4, 1);
-
-	int tmp[] = { 1,2,1,4,5 };
-	InsertSort(tmp, 5, 1);
-
-	for (unsigned int i = 0; i < 5; ++i)
-	{
-		cout << *(tmp + i) << " ";
+		if (num == 1)
+		{
+			break;
+		}
+		
+		if (num % i == 0)
+		{
+			cout << i << " ";
+			num /= i;
+			i--;
+		}
 	}
-
 	return 0;
 }

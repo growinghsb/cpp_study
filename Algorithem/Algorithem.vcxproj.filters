@@ -123,6 +123,12 @@
     <ClCompile Include="Temp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StudentSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HomewordList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arr.h">

@@ -26,7 +26,7 @@ void MoveDown(PPOINTER, const char[][COL]);
 
 
 
-int main(void) {
+int main4(void) {
 	PLAYER player;
 	char maze[ROW][COL] = {};
 	

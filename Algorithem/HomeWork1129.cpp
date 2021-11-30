@@ -1,5 +1,4 @@
 #include<iostream>
-#include<clocale>
 
 using std::cout;
 using std::wcout;
@@ -10,7 +9,7 @@ void MyStrcpy(wchar_t* target, const wchar_t* source);
 void MyStrConcat(wchar_t* target, const wchar_t* source);
 int  MyStrcmp(const wchar_t* first, const wchar_t* second);
 
-int main()
+int main1129()
 {
 	setlocale(LC_ALL, "ko_KR.utf8");
 

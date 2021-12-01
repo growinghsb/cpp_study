@@ -4,6 +4,7 @@
 #include "Sorted.h"
 #include "MyStack.h"
 
+using std::wcout;
 using std::cout;
 using std::endl;
 
@@ -66,7 +67,7 @@ void InsertionSort(int* arr, const int length)
 	}
 }
 
-void QuickSort(int* arr, const int length)
+void QuickSortLoop(int* arr, const int length)
 {
 	MyStack stack;
 
@@ -142,11 +143,12 @@ void Verification(int* arr, const int length)
 	}
 }
 
-void Print(int* arr, const int length)
+void Print(int* arr, const int length, const char* coment)
 {
+	cout << coment << endl;
 	for (int i = 0; i < length; ++i)
 	{
 		cout << "[" << *(arr + i) << "] ";
 	}
-	cout << endl;
+	cout << endl << endl;
 }

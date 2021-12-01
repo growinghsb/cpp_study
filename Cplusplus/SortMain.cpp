@@ -5,28 +5,37 @@
 using std::cout;
 using std::endl;
 
+enum class ARR_LENGTH
+{
+	TEST_LENGTH = 10,
+	ORIGINAL_LANGTH = 100
+};
+
 int main()
 {
-	const int TEST_LENGTH = 5;
-	int test[] = { 5,4,3,2,1 };
+	srand(time(0));
 
-	const int LENGTH = 100;
+	int test[] = { 5,3,2,1,3,6,7,2,1,9 };
 
-	int arrBubble[LENGTH] = {};
-	RandomSetting(arrBubble, LENGTH);
-	BubbleSort(arrBubble, LENGTH);
+	int arrBubble[(unsigned int)ARR_LENGTH::ORIGINAL_LANGTH] = {};
+	RandomSetting(arrBubble, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	BubbleSort(arrBubble, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	Verification(arrBubble, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
 
-	int arrSelection[LENGTH] = {};
-	RandomSetting(arrSelection, LENGTH);
-	SelectionSort(arrSelection, LENGTH);
+	int arrSelection[(unsigned int)ARR_LENGTH::ORIGINAL_LANGTH] = {};
+	RandomSetting(arrSelection, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	SelectionSort(arrSelection, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	Verification(arrSelection, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
 
-	int arrInsertion[LENGTH] = {};
-	RandomSetting(arrInsertion, LENGTH);
-	InsertionSort(arrInsertion, LENGTH);
+	int arrInsertion[(unsigned int)ARR_LENGTH::ORIGINAL_LANGTH] = {};
+	RandomSetting(arrInsertion, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	InsertionSort(arrInsertion, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	Verification(arrInsertion, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
 
-	int arrQuickSort[LENGTH] = {};
-	//RandomSetting(arrQuickSort, LENGTH);
-	QuickSort(test, TEST_LENGTH);
+	int arrQuickSort[(unsigned int)ARR_LENGTH::ORIGINAL_LANGTH] = {};
+	RandomSetting(arrQuickSort, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	QuickSort(arrQuickSort, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	Verification(arrQuickSort, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
 
 	return 0;
 }

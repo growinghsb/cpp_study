@@ -9,8 +9,6 @@ using std::endl;
 
 void RandomSetting(int* arr, const int length)
 {
-	srand(rand() % 10);
-
 	for (int i = 0; i < length; ++i)
 	{
 		*(arr + i) = rand() % 1000;
@@ -74,44 +72,56 @@ void QuickSort(int* arr, const int length)
 
 	while (true)
 	{
-		int pivotIdx;
-		int inputIdx;
-		int startIdx;
+		int start = 0;
+		int end = 0;
 
 		if (0 == stack.GetSize())
 		{
-			pivotIdx = length - 1;
-			inputIdx = 0;
-			startIdx = 0;
+			end = length - 1;
 		}
 		else
 		{
-			pivotIdx = stack.Pop();
-			inputIdx = stack.Pop();
-			startIdx = inputIdx;
+			end = stack.Pop();
+			start = stack.Pop();
 		}
 
-		while (startIdx < pivotIdx)
+		if (start < end)
 		{
-			if (*(arr + startIdx) < *(arr + pivotIdx))
-			{
-				Swap(arr + inputIdx, arr + startIdx);
-				++inputIdx;
-				++startIdx;
-			}
-			else
-			{
-				++startIdx;
-			}
+			int pivot = start;
+			int right = start + 1;
+			int left = end;
 
-			if (startIdx == pivotIdx)
+			while (right <= left)
 			{
-				Swap(arr + inputIdx, arr + pivotIdx);
+				while (*(arr + right) <= *(arr + pivot) && right < end)
+				{
+					++right;
+				}
 
-				stack.Push(inputIdx + 1);
-				stack.Push(length - 1);
-				stack.Push(0);
-				stack.Push(inputIdx - 1);
+				while (*(arr + left) >= *(arr + pivot) && left > start)
+				{
+					--left;
+				}
+
+				if (right < left)
+				{
+					Swap(arr + right, arr + left);
+				}
+				else
+				{
+					Swap(arr + pivot, arr + left);
+				}
+			}
+			stack.Push(left + 1);
+			stack.Push(end);
+			stack.Push(start);
+			stack.Push(right - 1);
+		}
+		else
+		{
+			if (0 == stack.GetSize())
+			{
+				break;
 			}
 		}
 	}
@@ -122,6 +132,14 @@ void Swap(int* v1, int* v2)
 	int tmp = *v1;
 	*v1 = *v2;
 	*v2 = tmp;
+}
+
+void Verification(int* arr, const int length)
+{
+	for (int i = 0; i < length - 1; ++i)
+	{
+		assert(*(arr + i) <= *(arr + i + 1));
+	}
 }
 
 void Print(int* arr, const int length)

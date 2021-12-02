@@ -46,11 +46,11 @@ int main()
 	Print(arrQuickSort, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "QuickSort 정렬 후");
 
 	int arrMergeSortRecursive[(unsigned int)ARR_LENGTH::ORIGINAL_LANGTH] = {};
-	//RandomSetting(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
-	//Print(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "정렬 전");
-	MergeSortRecursive(test, 0, (unsigned int)ARR_LENGTH::TEST_LENGTH - 1);
-	//Verification(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
-	//Print(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "QuickSort 정렬 후");
-
+	RandomSetting(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	Print(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "정렬 전");
+	MergeSortRecursive(arrMergeSortRecursive, 0, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH - 1);
+	Verification(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	Print(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "MergeSortRecursive 정렬 후");
+	
 	return 0;
 }

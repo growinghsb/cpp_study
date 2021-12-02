@@ -137,6 +137,34 @@ void MergeSortRecursive(int* arr, int start, int end)
 		int mid = (end + start) / 2;
 		MergeSortRecursive(arr, start, mid);
 		MergeSortRecursive(arr, mid + 1, end);
+
+		int front = start;
+		int back = mid + 1;
+		int tmpIdx = start;
+
+		while (front <= mid && back <= end) 
+		{
+			if (*(arr + front) <= *(arr + back)) 
+			{
+				*(tmp + tmpIdx) = *(arr + front);
+				++front;
+			}
+			else 
+			{
+				*(tmp + tmpIdx) = *(arr + back);
+				++back;
+			}
+			++tmpIdx;
+		}
+		for (int i = 0; i <= mid - front; ++i) 
+		{
+			*(tmp + tmpIdx++) = *(arr + front + i);
+		}
+
+		for (int i = start; i < tmpIdx; ++i) 
+		{
+			*(arr + i) = *(tmp + i);
+		}
 	}
 }
 

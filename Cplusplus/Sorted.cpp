@@ -8,6 +8,8 @@ using std::wcout;
 using std::cout;
 using std::endl;
 
+int tmp[100] = {};
+
 void RandomSetting(int* arr, const int length)
 {
 	for (int i = 0; i < length; ++i)
@@ -126,6 +128,21 @@ void QuickSortLoop(int* arr, const int length)
 			}
 		}
 	}
+}
+
+void MergeSortRecursive(int* arr, int start, int end)
+{
+	if (start < end)
+	{
+		int mid = (end + start) / 2;
+		MergeSortRecursive(arr, start, mid);
+		MergeSortRecursive(arr, mid + 1, end);
+	}
+}
+
+void MergeSortLoop(int* arr, const int length)
+{
+
 }
 
 void Swap(int* v1, int* v2)

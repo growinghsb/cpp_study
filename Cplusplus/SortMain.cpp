@@ -7,7 +7,7 @@ using std::endl;
 
 enum class ARR_LENGTH
 {
-	TEST_LENGTH = 10,
+	TEST_LENGTH = 5,
 	ORIGINAL_LANGTH = 100
 };
 
@@ -15,7 +15,7 @@ int main()
 {
 	srand(time(0));
 
-	int test[] = { 5,3,2,1,3,6,7,2,1,9 };
+	int test[] = { 5,4,3,2,1 };
 
 	int arrBubble[(unsigned int)ARR_LENGTH::ORIGINAL_LANGTH] = {};
 	RandomSetting(arrBubble, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
@@ -44,6 +44,13 @@ int main()
 	QuickSortLoop(arrQuickSort, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
 	Verification(arrQuickSort, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
 	Print(arrQuickSort, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "QuickSort 정렬 후");
+
+	int arrMergeSortRecursive[(unsigned int)ARR_LENGTH::ORIGINAL_LANGTH] = {};
+	//RandomSetting(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	//Print(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "정렬 전");
+	MergeSortRecursive(test, 0, (unsigned int)ARR_LENGTH::TEST_LENGTH - 1);
+	//Verification(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH);
+	//Print(arrMergeSortRecursive, (unsigned int)ARR_LENGTH::ORIGINAL_LANGTH, "QuickSort 정렬 후");
 
 	return 0;
 }

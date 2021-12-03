@@ -70,8 +70,8 @@ void InsertionSort(int* arr, const int length)
 	재귀함수 대신 직접 구현한
 	자료구조 스택을 이용해 구현
 
-	피벗 값을 이용해 한 번 정렬한 후 
-	피벗 값을 기준으로 재귀함수로 
+	피벗 값을 이용해 한 번 정렬한 후
+	피벗 값을 기준으로 재귀함수로
 	배열을 분할 하는 과정을 스택에
 	인덱스를 순서에 맞게 넣는 방식으로
 	재귀함수를 사용하지 않고 구현 가능.
@@ -147,7 +147,7 @@ void QuickSortLoop(int* arr, const int length)
 
 	이 과정에서 임시 배열이 필요함.
 	정렬 된 배열을 담아둘 공간이
-	필요하기 때문이다. 
+	필요하기 때문이다.
 */
 void MergeSortRecursive(int* arr, int startIndex, int lastIndex)
 {
@@ -204,22 +204,9 @@ void MergeSortLoop(int* arr, const int length)
 */
 void MaxHeap(int* arr, int lastIndex)
 {
-	int parentIdx = lastIndex / 2;
+	int parentIdx;
 
-	if (0 == lastIndex % 2)
-	{
-		lastIndex -= 1;
-	}
-	else
-	{
-		if (*(arr + lastIndex) > *(arr + parentIdx))
-		{
-			Swap(arr + lastIndex, arr + parentIdx);
-		}
-		lastIndex -= 2;
-	}
-
-	for (; lastIndex > 0; lastIndex -= 2)
+	if (0 != lastIndex % 2)
 	{
 		parentIdx = lastIndex / 2;
 
@@ -227,10 +214,25 @@ void MaxHeap(int* arr, int lastIndex)
 		{
 			Swap(arr + lastIndex, arr + parentIdx);
 		}
+		--parentIdx;
+	}
+	else
+	{
+		parentIdx = lastIndex / 2 - 1;
+	}
 
-		if (*(arr + lastIndex + 1) > *(arr + parentIdx))
+	for (; parentIdx >= 0; --parentIdx)
+	{
+		int childIdx = parentIdx * 2 + 1;
+
+		if (*(arr + childIdx) < *(arr + childIdx + 1))
 		{
-			Swap(arr + lastIndex + 1, arr + parentIdx);
+			++childIdx;
+		}
+
+		if (*(arr + childIdx) > *(arr + parentIdx))
+		{
+			Swap(arr + childIdx, arr + parentIdx);
 		}
 	}
 }
@@ -238,17 +240,17 @@ void MaxHeap(int* arr, int lastIndex)
 /*
 	힙정렬은 힙을 한 번 최대힙으로
 	만들 때 마다 최대값이 루트 노드에
-	위치 하는 것을 이용해 정렬한다. 
+	위치 하는 것을 이용해 정렬한다.
 
 	한 번 최대힙으로 만들고 루트노드를
 	배열의 맨 뒤에 위치시키고, 또 한 번
 	최대힙을 만들고, 맨 뒤 - 1 에 위치시키는
 	식으로 뒤에서 부터 채워가는 오름차순
-	정렬을 구현한다. 
+	정렬을 구현한다.
 
 	최대힙을 데이터 개수인 n 번 실행 하고,
-	최대힙의 시간복잡도가 log n 이므로 
-	힙정렬 알고리즘의 시간복잡도는 
+	최대힙의 시간복잡도가 log n 이므로
+	힙정렬 알고리즘의 시간복잡도는
 	O(n log n)이 된다.
 */
 void HeapSort(int* arr, const int length)
@@ -271,11 +273,11 @@ void Swap(int* v1, int* v2)
 	정렬이 잘 됬는지 검증하는 코드
 	assert() 에 조건으로 값을 비교하는데,
 	현재 i 위치의 값과 i + 1 위치의 값을
-	비교해 항상 i 의 값이 작거나 같아야 
+	비교해 항상 i 의 값이 작거나 같아야
 	한다고 단정 지었으므로,정렬이 안되면
-	assert 에러가 발생한다. 
-	
-	assert() 조건이 거짓이 되려면 
+	assert 에러가 발생한다.
+
+	assert() 조건이 거짓이 되려면
 	i + 1 값이 더 작아야 하기 때문이고,
 	이는 정렬이 안됬다는 증거이기 때문이다.
 */

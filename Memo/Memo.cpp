@@ -1,15 +1,18 @@
 #include<iostream>
-#include "A.h"
+#include <crtdbg.h>
+
+#include"delete.h"
 
 using std::cout;
 using std::endl;
 
 int main()
 {
-	a = 30;
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	cout << a << endl;
-	cout << GetValue() << endl;
+	Test* testArr = new Test[10];
+
+ 	delete[] testArr;
 
 	return 0;
 }

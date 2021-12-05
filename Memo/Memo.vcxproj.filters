@@ -19,6 +19,9 @@
     <Filter Include="Source Files\ConstructorTest">
       <UniqueIdentifier>{c7ab7a62-9378-482d-a50b-dda3cf4bdc19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DeleteTest">
+      <UniqueIdentifier>{50630a7f-629e-47d0-b36d-194cb4c6d045}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="A.cpp">
@@ -32,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="Memo.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="delete.h">
+      <Filter>Source Files\DeleteTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

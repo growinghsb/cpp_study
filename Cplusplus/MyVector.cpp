@@ -96,6 +96,16 @@ MyVector::iterator MyVector::end()
 	return iterator(this, mData + mSize, mSize);
 }
 
+MyVector::iterator MyVector::rBegin()
+{
+	return iterator(this, mData + mSize - 1, mSize);
+}
+
+MyVector::iterator MyVector::rEnd()
+{
+	return iterator(this, mData - 1, mSize);
+}
+
 void MyVector::dataCopy(const MyVector& other)
 {
 	for (unsigned int i = 0; i < mSize; ++i)
@@ -104,11 +114,14 @@ void MyVector::dataCopy(const MyVector& other)
 	}
 }
 
-// iterator func
+/*
+	iterator func
+*/
 
-MyVector::iterator::iterator() 
+MyVector::iterator::iterator()
 	: mArr(nullptr)
 	, mArrData(nullptr)
+	, mArrSize(0)
 {
 }
 

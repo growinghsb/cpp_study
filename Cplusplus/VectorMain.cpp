@@ -32,6 +32,8 @@ int main()
 	vector<int>::iterator endIter = stlVec.end();
 
 	++beginIter;
+	*beginIter = 100;
+	int indirection = *beginIter;
 
 	/*for (beginIter = stlVec.begin(); beginIter != endIter; ++beginIter)
 	{
@@ -88,15 +90,31 @@ int main()
 	myVec[5] = 1000;
 	isSame = myVec2 == myVec; // false
 
-	MyVector::iterator myIter = myVec.begin();
-	MyVector::iterator myEndIter = myVec.end();
-
-	++(++myIter);
-	myVec.pushBack(1);
-
-	for (myIter = myVec.begin(); myIter != myEndIter; ++myIter)
+	MyVector iterTestVec;
+	
+	for (int i = 1; i <= 10; ++i) 
 	{
-		
+		iterTestVec.pushBack(i * 2);
+	}
+
+	MyVector::iterator myBeginIter;
+	MyVector::iterator myEndIter = iterTestVec.end();
+
+	//++(++myBeginIter);
+
+	for (myBeginIter = iterTestVec.begin(); myBeginIter != myEndIter; ++myBeginIter)
+	{
+		cout << *myBeginIter << endl;
+	}
+
+	cout << endl;
+
+	MyVector::iterator myRBeginIter;
+	MyVector::iterator myREndIter = iterTestVec.rEnd();
+
+	for (myRBeginIter = iterTestVec.rBegin(); myRBeginIter != myREndIter; --myRBeginIter)
+	{
+		cout << *myRBeginIter << endl;
 	}
 
 	return 0;

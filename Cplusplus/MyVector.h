@@ -62,6 +62,8 @@ public:
 
 	iterator begin();
 	iterator end();
+	iterator rBegin();
+	iterator rEnd();
 
 	class iterator {
 	public:
@@ -79,6 +81,16 @@ public:
 			return *this;
 		}
 
+		iterator& operator--() 
+		{
+			assert(mArrSize == mArr->mSize);
+			assert(mArr->mData - 1 != mArrData);
+
+			--mArrData;
+
+			return *this;
+		}
+
 		bool operator!=(const iterator& rhs) 
 		{
 			assert(mArrSize == mArr->mSize && rhs.mArrSize == mArr->mSize);
@@ -93,6 +105,13 @@ public:
 		bool operator==(const iterator& rhs) 
 		{
 			return !(operator!=(rhs));
+		}
+
+		int& operator*() 
+		{
+			assert(mArr->mData + mArrSize + 1 != mArrData + 1);
+
+			return *mArrData;
 		}
 
 	private:

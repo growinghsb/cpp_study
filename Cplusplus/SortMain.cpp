@@ -11,7 +11,7 @@ enum class ARR_LENGTH
 	ORIGINAL_LANGTH = 23
 };
 
-int main()
+int mainSorted()
 {
 	srand(time(0));
 

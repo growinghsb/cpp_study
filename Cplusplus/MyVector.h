@@ -109,7 +109,7 @@ public:
 
 		int& operator*() 
 		{
-			assert(mArr->mData + mArrSize + 1 != mArrData + 1);
+			assert(mArr->mData + mArrSize + 1 != mArrData + 1 && mArr->mData - 1 != mArrData);
 
 			return *mArrData;
 		}

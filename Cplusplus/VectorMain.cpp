@@ -100,7 +100,7 @@ int main()
 	MyVector::iterator myBeginIter;
 	MyVector::iterator myEndIter = iterTestVec.end();
 
-	//++(++myBeginIter);
+	cout << "[순서대로 출력]" << endl;
 
 	for (myBeginIter = iterTestVec.begin(); myBeginIter != myEndIter; ++myBeginIter)
 	{
@@ -112,6 +112,7 @@ int main()
 	MyVector::iterator myRBeginIter;
 	MyVector::iterator myREndIter = iterTestVec.rEnd();
 
+	cout << "[역순으로 출력]" << endl;
 	for (myRBeginIter = iterTestVec.rBegin(); myRBeginIter != myREndIter; --myRBeginIter)
 	{
 		cout << *myRBeginIter << endl;

@@ -28,13 +28,15 @@ int main()
 	int stlVecback = stlVec.back();
 	bool isEmpty = stlVec.empty();
 
-	vector<int>::iterator beginIter;
+	vector<int>::iterator beginIter = stlVec.begin();
 	vector<int>::iterator endIter = stlVec.end();
 
-	for (beginIter = stlVec.begin(); beginIter != endIter; ++beginIter)
+	++beginIter;
+
+	/*for (beginIter = stlVec.begin(); beginIter != endIter; ++beginIter)
 	{
 		cout << *beginIter << endl;
-	}
+	}*/
 
 	// =========================================
 
@@ -85,6 +87,17 @@ int main()
 
 	myVec[5] = 1000;
 	isSame = myVec2 == myVec; // false
+
+	MyVector::iterator myIter = myVec.begin();
+	MyVector::iterator myEndIter = myVec.end();
+
+	++(++myIter);
+	myVec.pushBack(1);
+
+	for (myIter = myVec.begin(); myIter != myEndIter; ++myIter)
+	{
+		
+	}
 
 	return 0;
 }

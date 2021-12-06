@@ -57,6 +57,50 @@ public:
 		--mSize;
 	}
 
+	// 전방선언
+	class iterator;
+
+	iterator begin();
+	iterator end();
+
+	class iterator {
+	public:
+		iterator();
+		iterator(MyVector* arr, int* arrData, int size);
+		~iterator() = default;
+
+		iterator& operator++() 
+		{
+			assert(mArrSize == mArr->mSize);
+			assert(mArr->mData + mArrSize + 1 != mArrData + 1);
+
+			++mArrData;
+	
+			return *this;
+		}
+
+		bool operator!=(const iterator& rhs) 
+		{
+			assert(mArrSize == mArr->mSize && rhs.mArrSize == mArr->mSize);
+
+			if (this->mArrData != rhs.mArrData) 
+			{
+				return true;
+			}
+			return false;
+		}
+
+		bool operator==(const iterator& rhs) 
+		{
+			return !(operator!=(rhs));
+		}
+
+	private:
+		MyVector* mArr;
+		int* mArrData;
+		int mArrSize;
+	};
+
 private:
 	int* mData;
 	int mCapacity;

@@ -86,10 +86,35 @@ bool MyVector::operator==(const MyVector& rhs)
 	return true;
 }
 
+MyVector::iterator MyVector::begin()
+{
+	return iterator(this, mData, mSize);
+}
+
+MyVector::iterator MyVector::end()
+{
+	return iterator(this, mData + mSize, mSize);
+}
+
 void MyVector::dataCopy(const MyVector& other)
 {
 	for (unsigned int i = 0; i < mSize; ++i)
 	{
 		*(mData + i) = *(other.mData + i);
 	}
+}
+
+// iterator func
+
+MyVector::iterator::iterator() 
+	: mArr(nullptr)
+	, mArrData(nullptr)
+{
+}
+
+MyVector::iterator::iterator(MyVector* arr, int* arrData, int size)
+	: mArr(arr)
+	, mArrData(arrData)
+	, mArrSize(size)
+{
 }

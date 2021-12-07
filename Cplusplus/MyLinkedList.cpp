@@ -1,4 +1,9 @@
+#include<iostream>
+
 #include "MyLinkedList.h"
+
+using std::cout;
+using std::endl;
 
 /*
 	Node func
@@ -20,6 +25,21 @@ MyLinkedList::MyLinkedList()
 	, mTailNode(nullptr)
 	, mNodeSize(0)
 {
+}
+
+MyLinkedList::MyLinkedList(const MyLinkedList& other)
+	: mHeadNode(nullptr)
+	, mTailNode(nullptr)
+	, mNodeSize(0)
+{
+	Node* tmpNode = other.mHeadNode;
+
+	while(nullptr != tmpNode) 
+	{
+		pushBack(tmpNode->mData);
+
+		tmpNode = tmpNode->mNextNode;
+	}
 }
 
 MyLinkedList::~MyLinkedList()
@@ -105,10 +125,68 @@ void MyLinkedList::popBack()
 	--mNodeSize;
 }
 
+bool MyLinkedList::isData(const int searchData) const
+{
+	Node* tmpNode = mHeadNode;
+
+	while (nullptr != tmpNode) 
+	{
+		if (tmpNode->mData == searchData) 
+		{
+			return true;
+		}
+		tmpNode = tmpNode->mNextNode;
+	}
+
+	return false;
+}
+
 void MyLinkedList::clear()
 {
 	while (mNodeSize > 0) 
 	{
 		popFront();
 	}
+}
+
+void MyLinkedList::operator=(const MyLinkedList& rhs)
+{
+	clear();
+
+	Node* tmpNode = rhs.mHeadNode;
+
+	while (nullptr != tmpNode) 
+	{
+		pushBack(tmpNode->mData);
+		
+		tmpNode = tmpNode->mNextNode;
+	}
+}
+
+void MyLinkedList::printOrder() const 
+{
+	Node* tmpNode = mHeadNode;
+
+	while (nullptr != tmpNode) 
+	{
+		cout << "[" << tmpNode->mData << "] ";
+		
+		tmpNode = tmpNode->mNextNode;
+	}
+
+	cout << endl;
+}
+
+void MyLinkedList::printReverseOrder() const 
+{
+	Node* tmpNode = mTailNode;
+
+	while (nullptr != tmpNode) 
+	{
+		cout << "[" << tmpNode->mData << "] ";
+
+		tmpNode = tmpNode->mPrevNode;
+	}
+
+	cout << endl;
 }

@@ -45,7 +45,27 @@ int main()
 	myList.popBack();
 	myList.popBack();
 
-	myList.clear();
+	bool isData = myList.isData(10); // true
+	isData = myList.isData(50); // false
+
+	MyLinkedList list2 = myList;
+	MyLinkedList list3;
+
+	bool isEmpty = list3.isEmpty();
+
+	list3 = myList;
+
+	cout << "[myList]" << endl;
+	myList.printOrder();
+	myList.printReverseOrder();
+
+	cout << "[list2]" << endl;
+	list2.printOrder();
+	list2.printReverseOrder();
+
+	cout << "[list3]" << endl;
+	list3.printOrder();
+	list3.printReverseOrder();
 
 	return 0;
 }

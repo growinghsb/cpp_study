@@ -2,6 +2,10 @@
 
 #include <cassert>
 
+/*
+	class Node
+*/
+
 class Node
 {
 	friend class MyLinkedList;
@@ -28,10 +32,15 @@ private:
 	Node* mPrevNode;
 };
 
+/*
+	class list
+*/
+
 class MyLinkedList
 {
 public:
 	MyLinkedList();
+	MyLinkedList(const MyLinkedList& other);
 	~MyLinkedList();
 
 	void pushFront(int data);
@@ -40,7 +49,14 @@ public:
 	void popFront();
 	void popBack();
 
+	bool isData(const int searchData) const;
+
 	void clear();
+
+	void operator=(const MyLinkedList& rhs);
+
+	void printOrder() const;
+	void printReverseOrder() const;
 
 	int getNodeSize() const
 	{
@@ -61,6 +77,14 @@ public:
 		return mTailNode->mData;
 	}
 
+	bool isEmpty() const
+	{
+		if (0 == mNodeSize)
+		{
+			return true;
+		}
+		return false;
+	}
 
 private:
 	Node* mHeadNode;

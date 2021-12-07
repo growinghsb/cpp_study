@@ -19,6 +19,9 @@
     <Filter Include="DinamicArray">
       <UniqueIdentifier>{b0f8950a-f4ae-44a1-8a7f-196adab997bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LinkedList">
+      <UniqueIdentifier>{1c40a304-c7b1-4858-9d08-3faaf4aad7a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SortMain.cpp">
@@ -33,6 +36,12 @@
     <ClCompile Include="VectorMain.cpp">
       <Filter>DinamicArray</Filter>
     </ClCompile>
+    <ClCompile Include="MyLinkedList.cpp">
+      <Filter>LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedListMain.cpp">
+      <Filter>LinkedList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sorted.h">
@@ -43,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="MyVector.h">
       <Filter>DinamicArray</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLinkedList.h">
+      <Filter>LinkedList</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

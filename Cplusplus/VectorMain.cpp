@@ -7,7 +7,7 @@ using std::vector;
 using std::cout;
 using std::endl;
 
-int main()
+int mainVector()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 

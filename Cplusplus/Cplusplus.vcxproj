@@ -139,12 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LinkedListMain.cpp" />
+    <ClCompile Include="MyLinkedList.cpp" />
     <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="Sorted.cpp" />
     <ClCompile Include="SortMain.cpp" />
     <ClCompile Include="VectorMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyLinkedList.h" />
     <ClInclude Include="MyStack.h" />
     <ClInclude Include="MyVector.h" />
     <ClInclude Include="Sorted.h" />

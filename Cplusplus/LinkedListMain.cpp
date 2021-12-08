@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 using std::list;
 
-int mainList() 
+int main() 
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
@@ -22,9 +22,19 @@ int mainList()
 
 	stdList.clear();
 
+	list<int>::iterator stdListBeginIter;
+	list<int>::iterator stdListEndIter = stdList.end();
+	
+	for (stdListBeginIter = stdList.begin(); stdListBeginIter != stdListEndIter; ++stdListBeginIter)
+	{
+		cout << *stdListBeginIter << "  ";
+	}
+
+	stdListBeginIter = stdList.begin();
+
 	// MyLinkedList
 
-	MyLinkedList myList;
+	MyLinkedList<int> myList;
 
 	myList.pushFront(10);
 	myList.pushFront(20);
@@ -48,8 +58,8 @@ int mainList()
 	bool isData = myList.isData(10); // true
 	isData = myList.isData(50); // false
 
-	MyLinkedList list2 = myList;
-	MyLinkedList list3;
+	MyLinkedList<int> list2 = myList;
+	MyLinkedList<int> list3;
 
 	bool isEmpty = list3.isEmpty();
 
@@ -66,6 +76,16 @@ int mainList()
 	cout << "[list3]" << endl;
 	list3.printOrder();
 	list3.printReverseOrder();
+
+	MyLinkedList<int>::iterator beginIter = myList.begin();
+	MyLinkedList<int>::iterator endIter = myList.end();
+
+	cout << endl;
+	cout << "[iterator ¼øÈ¸]" << endl;
+	for (beginIter = myList.begin(); beginIter != endIter; ++beginIter) 
+	{
+		cout << *beginIter << "  ";
+	}
 
 	return 0;
 }

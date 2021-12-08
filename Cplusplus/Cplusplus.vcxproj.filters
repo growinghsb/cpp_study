@@ -30,14 +30,8 @@
     <ClCompile Include="Sorted.cpp">
       <Filter>Sort</Filter>
     </ClCompile>
-    <ClCompile Include="MyVector.cpp">
-      <Filter>DinamicArray</Filter>
-    </ClCompile>
     <ClCompile Include="VectorMain.cpp">
       <Filter>DinamicArray</Filter>
-    </ClCompile>
-    <ClCompile Include="MyLinkedList.cpp">
-      <Filter>LinkedList</Filter>
     </ClCompile>
     <ClCompile Include="LinkedListMain.cpp">
       <Filter>LinkedList</Filter>

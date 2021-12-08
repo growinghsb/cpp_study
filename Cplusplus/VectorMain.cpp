@@ -40,9 +40,11 @@ int mainVector()
 		cout << *beginIter << endl;
 	}*/
 
+	stlVec.erase(beginIter);
+
 	// =========================================
 
-	MyVector myVec;
+	MyVector<int> myVec;
 	bool myVecisEmpty = myVec.empty(); // true
 
 	myVec.pushBack(10);
@@ -75,7 +77,7 @@ int mainVector()
 
 	int addResult = myVec[0] + myVec[4];
 
-	MyVector myVec2(myVec);
+	MyVector<int> myVec2(myVec);
 	bool isSame = myVec2 == myVec; // true
 
 	myVec.pushBack(60);
@@ -90,15 +92,15 @@ int mainVector()
 	myVec[5] = 1000;
 	isSame = myVec2 == myVec; // false
 
-	MyVector iterTestVec;
+	MyVector<int> iterTestVec;
 	
 	for (int i = 1; i <= 10; ++i) 
 	{
 		iterTestVec.pushBack(i * 2);
 	}
 
-	MyVector::iterator myBeginIter;
-	MyVector::iterator myEndIter = iterTestVec.end();
+	MyVector<int>::iterator myBeginIter;
+	MyVector<int>::iterator myEndIter = iterTestVec.end();
 
 	cout << "[순서대로 출력]" << endl;
 
@@ -109,14 +111,20 @@ int mainVector()
 
 	cout << endl;
 
-	MyVector::iterator myRBeginIter;
-	MyVector::iterator myREndIter = iterTestVec.rEnd();
+	MyVector<int>::iterator myRBeginIter;
+	MyVector<int>::iterator myREndIter = iterTestVec.rEnd();
 
 	cout << "[역순으로 출력]" << endl;
 	for (myRBeginIter = iterTestVec.rBegin(); myRBeginIter != myREndIter; --myRBeginIter)
 	{
 		cout << *myRBeginIter << endl;
 	}
+
+	MyVector<int>::iterator targetIter = myVec.begin();
+	++targetIter;
+
+	targetIter = myVec.erase(targetIter);
+	myVec.pushBack(1000);
 
 	return 0;
 }

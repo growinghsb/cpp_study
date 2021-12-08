@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 using std::list;
 
-int main() 
+int mainList() 
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 

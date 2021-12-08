@@ -39,6 +39,9 @@
     <ClCompile Include="delete.h">
       <Filter>Source Files\DeleteTest</Filter>
     </ClCompile>
+    <ClCompile Include="CopyConstructor.cpp">
+      <Filter>Source Files\ConstructorTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A.h">

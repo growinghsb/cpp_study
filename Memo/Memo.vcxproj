@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="A.cpp" />
+    <ClCompile Include="CopyConstructor.cpp" />
     <ClCompile Include="delete.h" />
     <ClCompile Include="Memo.cpp" />
     <ClCompile Include="Sub.cpp" />

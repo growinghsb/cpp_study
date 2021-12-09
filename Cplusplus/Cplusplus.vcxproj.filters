@@ -22,6 +22,9 @@
     <Filter Include="LinkedList">
       <UniqueIdentifier>{1c40a304-c7b1-4858-9d08-3faaf4aad7a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{86abfec6-c606-4b84-b9b1-f546b6f6c328}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SortMain.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="LinkedListMain.cpp">
       <Filter>LinkedList</Filter>
     </ClCompile>
+    <ClCompile Include="MyMap.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sorted.h">
@@ -49,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="MyLinkedList.h">
       <Filter>LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMap.h">
+      <Filter>Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -40,7 +40,7 @@ int main()
 						100
 				80				130	
 			65		90		110		150
-	 	50		 85	  95  105			170	     
+	 	50		 85	  95  105			170	   
 	*/
 
 	MyMap<int, int> myMap;
@@ -82,6 +82,8 @@ int main()
 
 	int result1 = myMap.find(50);
 	int result2 = myMap.find(myPair7.mKey);
+
+	myMap.printMapRecursive();
 
 	return 0;
 }

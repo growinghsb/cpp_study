@@ -87,6 +87,7 @@ public:
 	VALUE& find(const KEY&& key);
 
 	void clear();
+	void printMapRecursive();
 
 	int getCount() const
 	{
@@ -94,6 +95,8 @@ public:
 	}
 
 private:
+	void orderRecursive(MyNode<KEY, VALUE>* target);
+
 	MyNode<KEY, VALUE>* mRootNode;
 	int mCount;
 };
@@ -232,19 +235,19 @@ VALUE& MyMap<KEY, VALUE>::find(const KEY& key)
 
 	MyNode<KEY, VALUE>* startNode = mRootNode;
 
-	while (nullptr != startNode) 
+	while (nullptr != startNode)
 	{
-		if (key > startNode->mPairData.mKey) 
+		if (key > startNode->mPairData.mKey)
 		{
 			startNode = startNode->mRightChildNode;
 			continue;
 		}
-		else if (key < startNode->mPairData.mKey) 
+		else if (key < startNode->mPairData.mKey)
 		{
 			startNode = startNode->mLeftChildNode;
 			continue;
-		}	
-		
+		}
+
 		return startNode->mPairData.mValue;
 	}
 }
@@ -258,5 +261,23 @@ VALUE& MyMap<KEY, VALUE>::find(const KEY&& key)
 template<typename KEY, typename VALUE>
 void MyMap<KEY, VALUE>::clear()
 {
-	
+}
+
+template<typename KEY, typename VALUE>
+void MyMap<KEY, VALUE>::printMapRecursive()
+{
+	orderRecursive(mRootNode);
+}
+
+template<typename KEY, typename VALUE>
+void MyMap<KEY, VALUE>::orderRecursive(MyNode<KEY, VALUE>* target)
+{
+	if (nullptr == target)
+	{
+		return;
+	}
+
+	orderRecursive(target->mLeftChildNode);
+	cout << "[" << target->mPairData.mKey << ", " << target->mPairData.mValue << "] ";
+	orderRecursive(target->mRightChildNode);
 }

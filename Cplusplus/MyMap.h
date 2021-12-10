@@ -1,7 +1,8 @@
 #pragma once
 
-#include<cassert>
 #include<iostream>
+
+#include"MyStack.h"
 
 using std::cout;
 using std::endl;
@@ -87,6 +88,7 @@ public:
 	VALUE& find(const KEY&& key);
 
 	void clear();
+	void printMapLoop();
 	void printMapRecursive();
 
 	int getCount() const
@@ -261,6 +263,18 @@ VALUE& MyMap<KEY, VALUE>::find(const KEY&& key)
 template<typename KEY, typename VALUE>
 void MyMap<KEY, VALUE>::clear()
 {
+}
+
+template<typename KEY, typename VALUE>
+void MyMap<KEY, VALUE>::printMapLoop()
+{
+	MyStack stack;
+	MyNode<KEY, VALUE>* target = mRootNode;
+
+	while (true) 
+	{
+		
+	}
 }
 
 template<typename KEY, typename VALUE>

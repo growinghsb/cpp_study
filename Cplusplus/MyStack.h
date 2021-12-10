@@ -18,39 +18,46 @@
 
 */
 
+template<typename T>
 class MyStack {
 
 public:
 	MyStack();
 	~MyStack();
 
-	void Push(const int data);
+	void Push(const T& data);
 	int Pop();
 	void ReSize(const int size);
-	int GetSize() const;
+	int GetSize() const
+	{
+		return mSize;
+	}
 
 private:
-	int* mData;
+	T* mData;
 	int mCapacity;
 	int mSize;
 };
 
-MyStack::MyStack() 
+template<typename T>
+MyStack<T>::MyStack()
 	: mData(nullptr)
 	, mCapacity(4)
 	, mSize(0)
 {
-	mData = new int[mCapacity];
+	mData = new T[mCapacity];
 }
 
-MyStack::~MyStack()
+template<typename T>
+MyStack<T>::~MyStack()
 {
 	delete[] mData;
 }
 
-void MyStack::Push(const int data)
+template<typename T>
+void MyStack<T>::Push(const T& data)
 {
-	if (mCapacity == mSize) 
+	if (mCapacity == mSize)
 	{
 		ReSize(mCapacity * 2);
 	}
@@ -59,7 +66,8 @@ void MyStack::Push(const int data)
 	++mSize;
 }
 
-int MyStack::Pop() 
+template<typename T>
+int MyStack<T>::Pop()
 {
 	assert(mSize > 0);
 
@@ -68,25 +76,22 @@ int MyStack::Pop()
 	return *(mData + mSize);
 }
 
-void MyStack::ReSize(const int size) 
+template<typename T>
+void MyStack<T>::ReSize(const int size)
 {
-	if (mCapacity >= size) 
+	if (mCapacity >= size)
 	{
 		return;
 	}
 
 	mCapacity = size;
-	int* p = new int[mCapacity];
+	int* p = new T[mCapacity];
 
-	for (int i = 0; i < mSize; ++i) 
+	for (int i = 0; i < mSize; ++i)
 	{
 		*(p + i) = *(mData + i);
 	}
 
 	delete[] mData;
 	mData = p;
-}
-int MyStack::GetSize() const 
-{
-	return mSize;
 }

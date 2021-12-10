@@ -78,7 +78,7 @@ void InsertionSort(int* arr, const int length)
 */
 void QuickSortLoop(int* arr, const int length)
 {
-	MyStack stack;
+	MyStack<int> stack;
 
 	while (true)
 	{

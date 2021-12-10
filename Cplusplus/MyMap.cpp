@@ -97,27 +97,31 @@ int main()
 
 	cout << endl << endl;
 
-	cout << "[단말노드 지운 후]" << endl;
+	cout << "[단말노드 지운 후] 85" << endl;
 	myMap.deleteNode(85); // 단말노드 지우기 
 	myMap.printMapLoop();
 	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
 
 	cout << endl << endl;
 
-	cout << "[자식 하나 있는 노드 지운 후]" << endl;
-	myMap.deleteNode(65); // 자식 하나 있는 노드 지우기
+	cout << "[자식 두 개 노드 지운 후] 130" << endl;
+	myMap.deleteNode(130); // 자식 두 개 노드 지운 후
 	myMap.printMapLoop();
 	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
 
 	cout << endl << endl;
 
-	cout << "[자식 하나 있는 노드 지운 후]" << endl;
-	myMap.deleteNode(150); // 자식 하나 있는 노드 지우기
+	cout << "[자식 한 개 노드 지운 후] 65" << endl;
+	myMap.deleteNode(65); // 자식 한 개 노드 지운 후
 	myMap.printMapLoop();
 	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
 
 	cout << endl << endl;
 
+	cout << "[자식 한 개 노드 지운 후] 150" << endl;
+	myMap.deleteNode(150); // 자식 한 개 노드 지운 후
+	myMap.printMapLoop();
+	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
 
 	myMap.clear();
 

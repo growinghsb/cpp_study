@@ -99,6 +99,8 @@ public:
 
 private:
 	void orderRecursive(MyNode<KEY, VALUE>* target);
+	void preInOrderDelete(MyNode<KEY, VALUE>* target);
+	void postInOrderDelete(MyNode<KEY, VALUE>* target);
 
 	MyNode<KEY, VALUE>* mRootNode;
 	int mCount;
@@ -344,6 +346,60 @@ void MyMap<KEY, VALUE>::orderRecursive(MyNode<KEY, VALUE>* target)
 	orderRecursive(target->mRightChildNode);
 }
 
+// 중위선행자 삭제
+template<typename KEY, typename VALUE>
+void MyMap<KEY, VALUE>::preInOrderDelete(MyNode<KEY, VALUE>* target)
+{
+	MyNode<KEY, VALUE>* inOrderNode = target->mLeftChildNode;
+
+	while (nullptr != inOrderNode->mRightChildNode)
+	{
+		inOrderNode = inOrderNode->mRightChildNode;
+	}
+
+	if (nullptr != inOrderNode->mLeftChildNode)
+	{
+		inOrderNode->mLeftChildNode->mParentNode = inOrderNode->mParentNode;	
+	}
+
+	inOrderNode == inOrderNode->mParentNode->mLeftChildNode
+		? inOrderNode->mParentNode->mLeftChildNode = inOrderNode->mLeftChildNode
+		: inOrderNode->mParentNode->mRightChildNode = inOrderNode->mLeftChildNode;
+
+	MyPair<KEY, VALUE> tmpPair = move(target->mPairData);
+	target->mPairData = move(inOrderNode->mPairData);
+	inOrderNode->mPairData = move(tmpPair);
+
+	delete inOrderNode;
+}
+
+// 중위후속자 삭제
+template<typename KEY, typename VALUE>
+void MyMap<KEY, VALUE>::postInOrderDelete(MyNode<KEY, VALUE>* target)
+{
+	MyNode<KEY, VALUE>* inOrderNode = target->mRightChildNode;
+
+	while (nullptr != inOrderNode->mLeftChildNode)
+	{
+		inOrderNode = inOrderNode->mLeftChildNode;
+	}
+
+	if (nullptr != inOrderNode->mRightChildNode)
+	{
+		inOrderNode->mRightChildNode->mParentNode = inOrderNode->mParentNode;
+	}
+
+	inOrderNode == inOrderNode->mParentNode->mLeftChildNode
+		? inOrderNode->mParentNode->mLeftChildNode = inOrderNode->mRightChildNode
+		: inOrderNode->mParentNode->mRightChildNode = inOrderNode->mRightChildNode;
+
+	MyPair<KEY, VALUE> tmpPair = move(target->mPairData);
+	target->mPairData = move(inOrderNode->mPairData);
+	inOrderNode->mPairData = move(tmpPair);
+
+	delete inOrderNode;
+}
+
 template<typename KEY, typename VALUE>
 void MyMap<KEY, VALUE>::deleteNode(KEY&& key)
 {
@@ -385,70 +441,25 @@ void MyMap<KEY, VALUE>::deleteNode(KEY&& key)
 			}
 
 			delete targetNode;
-			break;
 		}
 		// 3. 자식이 두 개 있는 노드인 경우
 		else if (nullptr != targetNode->mLeftChildNode && nullptr != targetNode->mRightChildNode)
 		{
-			delete targetNode;
-			break;
+			preInOrderDelete(targetNode);
 		}
-
-		// 2. 자식이 하나만 있는 경우
-		if (nullptr != targetNode->mLeftChildNode) // 하나만 있는 자식이 왼쪽 자식인 경우
+		// 2. 자식이 한 개 있는 노드인 경우
+		else
 		{
-			MyNode<KEY, VALUE>* tmpNode = targetNode->mLeftChildNode;
-
-			while (nullptr != tmpNode->mRightChildNode)
+			if (nullptr != targetNode->mLeftChildNode)
 			{
-				tmpNode = tmpNode->mRightChildNode;
-			}
-
-			if (nullptr != tmpNode->mLeftChildNode)
-			{
-				tmpNode->mLeftChildNode->mParentNode = tmpNode->mParentNode;
-				tmpNode->mParentNode->mRightChildNode = tmpNode->mLeftChildNode;
-			}
-
-			tmpNode->mParentNode = targetNode->mParentNode;
-
-			if (targetNode->mParentNode->mLeftChildNode == targetNode)
-			{
-				targetNode->mParentNode->mLeftChildNode = tmpNode;
+				preInOrderDelete(targetNode);
 			}
 			else
 			{
-				targetNode->mParentNode->mRightChildNode = tmpNode;
-			}
-		}
-		else // 하나만 있는 자식이 오른쪽 자식인 경우
-		{
-			MyNode<KEY, VALUE>* tmpNode = targetNode->mRightChildNode;
-
-			while (nullptr != tmpNode->mLeftChildNode)
-			{
-				tmpNode = tmpNode->mLeftChildNode;
-			}
-
-			if (nullptr != tmpNode->mRightChildNode)
-			{
-				tmpNode->mRightChildNode->mParentNode = tmpNode->mParentNode;
-				tmpNode->mParentNode->mLeftChildNode = tmpNode->mRightChildNode;
-			}
-
-			tmpNode->mParentNode = targetNode->mParentNode;
-
-			if (targetNode->mParentNode->mLeftChildNode == targetNode)
-			{
-				targetNode->mParentNode->mLeftChildNode = tmpNode;
-			}
-			else
-			{
-				targetNode->mParentNode->mRightChildNode = tmpNode;
+				postInOrderDelete(targetNode);
 			}
 		}
 
-		delete targetNode;
 		break;
 	}
 }

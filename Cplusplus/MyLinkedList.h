@@ -104,6 +104,52 @@ public:
 		return mTailNode->mData;
 	}
 
+	T* getFrontNode() 
+	{
+		assert(nullptr != mHeadNode);
+
+		Node<T>* tmpNode = mHeadNode;
+		
+		if (1 == mNodeSize) 
+		{
+			mHeadNode = nullptr;
+			mTailNode = nullptr;
+		}
+		else 
+		{
+			mHeadNode = mHeadNode->mNextNode;
+			mHeadNode->setPrevNode(nullptr);
+			tmpNode->setNextNode(nullptr);
+		}
+
+		--mNodeSize;
+
+		return tmpNode;
+	}
+
+	T* getBackNode() 
+	{
+		assert(nullptr != mTailNode);
+
+		Node<T>* tmpNode = mTailNode;
+
+		if (1 == mNodeSize) 
+		{
+			mHeadNode = nullptr;
+			mTailNode = nullptr;
+		}
+		else 
+		{
+			mTailNode = mTailNode->mPrevNode;
+			mTailNode->setNextNode(nullptr);
+			tmpNode->setPrevNode(nullptr);
+		}
+
+		--mNodeSize;
+
+		return tmpNode;
+	}
+
 	bool isEmpty() const
 	{
 		if (0 == mNodeSize)

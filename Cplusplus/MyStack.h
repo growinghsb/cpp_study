@@ -26,12 +26,22 @@ public:
 	~MyStack();
 
 	void Push(const T& data);
-	int Pop();
+	T Pop();
 	void ReSize(const int size);
+	
 	int GetSize() const
 	{
 		return mSize;
 	}
+	
+	bool isEmpty() const
+	{
+		if (0 == mSize) 
+		{
+			return true;
+		}
+		return false;
+	}	
 
 private:
 	T* mData;
@@ -67,7 +77,7 @@ void MyStack<T>::Push(const T& data)
 }
 
 template<typename T>
-int MyStack<T>::Pop()
+T MyStack<T>::Pop()
 {
 	assert(mSize > 0);
 
@@ -85,7 +95,7 @@ void MyStack<T>::ReSize(const int size)
 	}
 
 	mCapacity = size;
-	int* p = new T[mCapacity];
+	T* p = new T[mCapacity];
 
 	for (int i = 0; i < mSize; ++i)
 	{

@@ -263,17 +263,42 @@ VALUE& MyMap<KEY, VALUE>::find(const KEY&& key)
 template<typename KEY, typename VALUE>
 void MyMap<KEY, VALUE>::clear()
 {
+
 }
 
 template<typename KEY, typename VALUE>
 void MyMap<KEY, VALUE>::printMapLoop()
 {
-	MyStack stack;
+	MyStack<MyNode<KEY, VALUE>*> stack;
 	MyNode<KEY, VALUE>* target = mRootNode;
 
-	while (true) 
+	while (true)
 	{
+		while (nullptr != target)
+		{
+			if (nullptr != target->mLeftChildNode)
+			{
+				stack.Push(target);
+				target = target->mLeftChildNode;
+			}
+			else
+			{
+				cout << "[" << target->mPairData.mKey << ", " << target->mPairData.mValue << "] ";
+				target = target->mRightChildNode;
+			}
+		}
 		
+		if (stack.isEmpty()) 
+		{
+			break;
+		}
+		else 
+		{
+			target = stack.Pop();
+			cout << "[" << target->mPairData.mKey << ", " << target->mPairData.mValue << "] ";
+
+			target = target->mRightChildNode;
+		}
 	}
 }
 

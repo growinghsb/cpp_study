@@ -85,5 +85,9 @@ int main()
 
 	myMap.printMapRecursive();
 
+	cout << endl << endl;
+
+	myMap.printMapLoop();
+
 	return 0;
 }

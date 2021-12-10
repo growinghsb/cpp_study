@@ -1,7 +1,6 @@
 #pragma once
 
-#include<iostream>
-
+#include"MyLinkedList.h"
 #include"MyStack.h"
 
 using std::cout;
@@ -86,6 +85,8 @@ public:
 
 	VALUE& find(const KEY& key);
 	VALUE& find(const KEY&& key);
+
+	void deleteNode(KEY&& key);
 
 	void clear();
 	void printMapLoop();
@@ -263,7 +264,29 @@ VALUE& MyMap<KEY, VALUE>::find(const KEY&& key)
 template<typename KEY, typename VALUE>
 void MyMap<KEY, VALUE>::clear()
 {
+	assert(nullptr != mRootNode);
 
+	MyLinkedList<MyNode<KEY, VALUE>*> queue;
+	queue.pushBack(mRootNode);
+
+	while (true != queue.isEmpty())
+	{
+		MyNode<KEY, VALUE>* targetNode = queue.popFront();
+
+		if (nullptr != targetNode->mLeftChildNode)
+		{
+			queue.pushBack(targetNode->mLeftChildNode);
+		}
+
+		if (nullptr != targetNode->mRightChildNode)
+		{
+			queue.pushBack(targetNode->mRightChildNode);
+		}
+
+		delete targetNode;
+	}
+
+	mCount = 0;
 }
 
 template<typename KEY, typename VALUE>
@@ -287,12 +310,12 @@ void MyMap<KEY, VALUE>::printMapLoop()
 				target = target->mRightChildNode;
 			}
 		}
-		
-		if (stack.isEmpty()) 
+
+		if (stack.isEmpty())
 		{
 			break;
 		}
-		else 
+		else
 		{
 			target = stack.Pop();
 			cout << "[" << target->mPairData.mKey << ", " << target->mPairData.mValue << "] ";
@@ -319,4 +342,113 @@ void MyMap<KEY, VALUE>::orderRecursive(MyNode<KEY, VALUE>* target)
 	orderRecursive(target->mLeftChildNode);
 	cout << "[" << target->mPairData.mKey << ", " << target->mPairData.mValue << "] ";
 	orderRecursive(target->mRightChildNode);
+}
+
+template<typename KEY, typename VALUE>
+void MyMap<KEY, VALUE>::deleteNode(KEY&& key)
+{
+	MyNode<KEY, VALUE>* targetNode = mRootNode;
+
+	while (nullptr != targetNode)
+	{
+		if (key > targetNode->mPairData.mKey)
+		{
+			targetNode = targetNode->mRightChildNode;
+			continue;
+		}
+
+		if (key < targetNode->mPairData.mKey)
+		{
+			targetNode = targetNode->mLeftChildNode;
+			continue;
+		}
+
+		--mCount;
+
+		/*
+			삭제 시 경우의 수
+			1. 단말 노드인 경우
+			2. 자식이 한 개 있는 노드인 경우
+			3. 자식이 두 개 있는 노드인 경우
+		*/
+
+		// 1. 단말 노드인 경우
+		if (nullptr == targetNode->mLeftChildNode && nullptr == targetNode->mRightChildNode)
+		{
+			if (targetNode->mParentNode->mLeftChildNode == targetNode)
+			{
+				targetNode->mParentNode->mLeftChildNode = nullptr;
+			}
+			else
+			{
+				targetNode->mParentNode->mRightChildNode = nullptr;
+			}
+
+			delete targetNode;
+			break;
+		}
+		// 3. 자식이 두 개 있는 노드인 경우
+		else if (nullptr != targetNode->mLeftChildNode && nullptr != targetNode->mRightChildNode)
+		{
+			delete targetNode;
+			break;
+		}
+
+		// 2. 자식이 하나만 있는 경우
+		if (nullptr != targetNode->mLeftChildNode) // 하나만 있는 자식이 왼쪽 자식인 경우
+		{
+			MyNode<KEY, VALUE>* tmpNode = targetNode->mLeftChildNode;
+
+			while (nullptr != tmpNode->mRightChildNode)
+			{
+				tmpNode = tmpNode->mRightChildNode;
+			}
+
+			if (nullptr != tmpNode->mLeftChildNode)
+			{
+				tmpNode->mLeftChildNode->mParentNode = tmpNode->mParentNode;
+				tmpNode->mParentNode->mRightChildNode = tmpNode->mLeftChildNode;
+			}
+
+			tmpNode->mParentNode = targetNode->mParentNode;
+
+			if (targetNode->mParentNode->mLeftChildNode == targetNode)
+			{
+				targetNode->mParentNode->mLeftChildNode = tmpNode;
+			}
+			else
+			{
+				targetNode->mParentNode->mRightChildNode = tmpNode;
+			}
+		}
+		else // 하나만 있는 자식이 오른쪽 자식인 경우
+		{
+			MyNode<KEY, VALUE>* tmpNode = targetNode->mRightChildNode;
+
+			while (nullptr != tmpNode->mLeftChildNode)
+			{
+				tmpNode = tmpNode->mLeftChildNode;
+			}
+
+			if (nullptr != tmpNode->mRightChildNode)
+			{
+				tmpNode->mRightChildNode->mParentNode = tmpNode->mParentNode;
+				tmpNode->mParentNode->mLeftChildNode = tmpNode->mRightChildNode;
+			}
+
+			tmpNode->mParentNode = targetNode->mParentNode;
+
+			if (targetNode->mParentNode->mLeftChildNode == targetNode)
+			{
+				targetNode->mParentNode->mLeftChildNode = tmpNode;
+			}
+			else
+			{
+				targetNode->mParentNode->mRightChildNode = tmpNode;
+			}
+		}
+
+		delete targetNode;
+		break;
+	}
 }

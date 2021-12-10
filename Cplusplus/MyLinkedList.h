@@ -24,12 +24,12 @@ public:
 		return mData;
 	}
 
-	Node<T>* getNextNode() 
+	Node<T>* getNextNode()
 	{
 		return mNextNode;
 	}
-	
-	Node<T>* getPrevNode() 
+
+	Node<T>* getPrevNode()
 	{
 		return mPrevNode;
 	}
@@ -68,8 +68,8 @@ public:
 	void pushFront(T data);
 	void pushBack(T data);
 
-	void popFront();
-	void popBack();
+	T popFront();
+	T popBack();
 
 	bool isData(const T searchData) const;
 
@@ -102,52 +102,6 @@ public:
 		assert(nullptr != mTailNode);
 
 		return mTailNode->mData;
-	}
-
-	T* getFrontNode() 
-	{
-		assert(nullptr != mHeadNode);
-
-		Node<T>* tmpNode = mHeadNode;
-		
-		if (1 == mNodeSize) 
-		{
-			mHeadNode = nullptr;
-			mTailNode = nullptr;
-		}
-		else 
-		{
-			mHeadNode = mHeadNode->mNextNode;
-			mHeadNode->setPrevNode(nullptr);
-			tmpNode->setNextNode(nullptr);
-		}
-
-		--mNodeSize;
-
-		return tmpNode;
-	}
-
-	T* getBackNode() 
-	{
-		assert(nullptr != mTailNode);
-
-		Node<T>* tmpNode = mTailNode;
-
-		if (1 == mNodeSize) 
-		{
-			mHeadNode = nullptr;
-			mTailNode = nullptr;
-		}
-		else 
-		{
-			mTailNode = mTailNode->mPrevNode;
-			mTailNode->setNextNode(nullptr);
-			tmpNode->setPrevNode(nullptr);
-		}
-
-		--mNodeSize;
-
-		return tmpNode;
 	}
 
 	bool isEmpty() const
@@ -295,9 +249,11 @@ void MyLinkedList<T>::pushBack(T data)
 
 
 template<typename T>
-void MyLinkedList<T>::popFront()
+T MyLinkedList<T>::popFront()
 {
 	assert(0 != mNodeSize);
+
+	T copyData = mHeadNode->mData;
 
 	if (1 == mNodeSize)
 	{
@@ -314,13 +270,17 @@ void MyLinkedList<T>::popFront()
 	}
 
 	--mNodeSize;
+
+	return copyData;
 }
 
 
 template<typename T>
-void MyLinkedList<T>::popBack()
+T MyLinkedList<T>::popBack()
 {
 	assert(0 != mNodeSize);
+
+	T copyData = mTailNode->mData;
 
 	if (1 == mNodeSize)
 	{
@@ -337,6 +297,8 @@ void MyLinkedList<T>::popBack()
 	}
 
 	--mNodeSize;
+
+	return copyData;
 }
 
 template<typename T>

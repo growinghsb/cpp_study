@@ -40,7 +40,9 @@ int main()
 						100
 				80				130	
 			65		90		110		150
-	 	50		 85	  95  105			170	   
+	 	50		 85	  95  105			170	    
+	      55                          165
+		53
 	*/
 
 	MyMap<int, int> myMap;
@@ -78,7 +80,10 @@ int main()
 	myMap.insert(makePair(95, 10));
 	myMap.insert(makePair(105, 11));
 	myMap.insert(makePair(170, 12));
-	myMap.insert(makePair(170, 1000));
+	myMap.insert(makePair(170, 13));
+	myMap.insert(makePair(55, 14));
+	myMap.insert(makePair(53, 15));
+	myMap.insert(makePair(165, 16));
 
 	int result1 = myMap.find(50);
 	int result2 = myMap.find(myPair7.mKey);
@@ -88,6 +93,33 @@ int main()
 	cout << endl << endl;
 
 	myMap.printMapLoop();
+	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
+
+	cout << endl << endl;
+
+	cout << "[단말노드 지운 후]" << endl;
+	myMap.deleteNode(85); // 단말노드 지우기 
+	myMap.printMapLoop();
+	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
+
+	cout << endl << endl;
+
+	cout << "[자식 하나 있는 노드 지운 후]" << endl;
+	myMap.deleteNode(65); // 자식 하나 있는 노드 지우기
+	myMap.printMapLoop();
+	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
+
+	cout << endl << endl;
+
+	cout << "[자식 하나 있는 노드 지운 후]" << endl;
+	myMap.deleteNode(150); // 자식 하나 있는 노드 지우기
+	myMap.printMapLoop();
+	cout << endl << "개수: " << myMap.getCount() << "개" << endl;
+
+	cout << endl << endl;
+
+
+	myMap.clear();
 
 	return 0;
 }

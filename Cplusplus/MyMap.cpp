@@ -5,7 +5,7 @@ using std::map;
 using std::pair;
 using std::make_pair;
 
-int main() 
+int mainMap() 
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 

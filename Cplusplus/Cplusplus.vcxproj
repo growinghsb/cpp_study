@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HashMap.cpp" />
+    <ClCompile Include="HashMapMain.cpp" />
     <ClCompile Include="LinkedListMain.cpp" />
     <ClCompile Include="MyMap.cpp" />
     <ClCompile Include="Sorted.cpp" />
@@ -146,6 +148,7 @@
     <ClCompile Include="VectorMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HashMap.h" />
     <ClInclude Include="MyLinkedList.h" />
     <ClInclude Include="MyMap.h" />
     <ClInclude Include="MyStack.h" />

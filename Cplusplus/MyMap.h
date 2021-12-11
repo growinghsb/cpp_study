@@ -240,21 +240,19 @@ VALUE& MyMap<KEY, VALUE>::find(const KEY& key)
 
 	MyNode<KEY, VALUE>* startNode = mRootNode;
 
-	while (nullptr != startNode)
+	while (key != startNode->mPairData.mKey)
 	{
 		if (key > startNode->mPairData.mKey)
 		{
 			startNode = startNode->mRightChildNode;
-			continue;
 		}
 		else if (key < startNode->mPairData.mKey)
 		{
 			startNode = startNode->mLeftChildNode;
-			continue;
 		}
-
-		return startNode->mPairData.mValue;
 	}
+
+	return startNode->mPairData.mKey;
 }
 
 template<typename KEY, typename VALUE>

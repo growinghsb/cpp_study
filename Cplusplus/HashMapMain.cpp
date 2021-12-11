@@ -1,11 +1,29 @@
-#include<unordered_map>
-
 #include "HashMap.h"
 
-using std::unordered_map;
-
-int main() 
+int main()
 {
-	
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
+	srand(time(nullptr));
+
+	HashMap<int, int> myHashMap(rand() % 1000, 10);
+
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(makeHashPair(rand() % 1000, 10));
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(makeHashPair(rand() % 1000, 10));
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(makeHashPair(rand() % 1000, 10));
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(rand() % 1000, 10);
+	myHashMap.insert(rand() % 1000, 10);
+
+	myHashMap.printMap();
+
+	HashPair<int, int> resultPair = myHashMap.get(rand() % 1000);
+
 	return 0;
 }

@@ -16,14 +16,17 @@
     <Filter Include="Sort">
       <UniqueIdentifier>{de4494f4-daf7-4734-b8d5-39749a6480cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DinamicArray">
-      <UniqueIdentifier>{b0f8950a-f4ae-44a1-8a7f-196adab997bb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="LinkedList">
       <UniqueIdentifier>{1c40a304-c7b1-4858-9d08-3faaf4aad7a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Map">
       <UniqueIdentifier>{86abfec6-c606-4b84-b9b1-f546b6f6c328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector">
+      <UniqueIdentifier>{b0f8950a-f4ae-44a1-8a7f-196adab997bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HashMap">
+      <UniqueIdentifier>{ce915f57-2bfc-442b-9c41-bb6d75ad8c73}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,13 +37,19 @@
       <Filter>Sort</Filter>
     </ClCompile>
     <ClCompile Include="VectorMain.cpp">
-      <Filter>DinamicArray</Filter>
+      <Filter>Vector</Filter>
     </ClCompile>
     <ClCompile Include="LinkedListMain.cpp">
       <Filter>LinkedList</Filter>
     </ClCompile>
     <ClCompile Include="MyMap.cpp">
       <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="HashMapMain.cpp">
+      <Filter>HashMap</Filter>
+    </ClCompile>
+    <ClCompile Include="HashMap.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,13 +60,16 @@
       <Filter>Sort</Filter>
     </ClInclude>
     <ClInclude Include="MyVector.h">
-      <Filter>DinamicArray</Filter>
+      <Filter>Vector</Filter>
     </ClInclude>
     <ClInclude Include="MyLinkedList.h">
       <Filter>LinkedList</Filter>
     </ClInclude>
     <ClInclude Include="MyMap.h">
       <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="HashMap.h">
+      <Filter>HashMap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

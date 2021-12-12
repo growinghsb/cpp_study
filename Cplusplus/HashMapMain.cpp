@@ -23,7 +23,7 @@ int main()
 
 	myHashMap.printMap();
 
-	HashPair<int, int> resultPair = myHashMap.get(rand() % 1000);
+	HashPair<int, int> resultPair = myHashMap.get(31);
 
 	return 0;
 }

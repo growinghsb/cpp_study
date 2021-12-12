@@ -144,8 +144,7 @@ public:
             return *this;
         }
 
-        T& operator* ()
-        {
+        T& operator* ()        {
             assert(nullptr != mTargetNode);
 
             return mTargetNode->getData();

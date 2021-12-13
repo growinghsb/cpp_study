@@ -3,17 +3,23 @@
 #include<iostream>
 #include<cassert>
 #include<queue>
+#include<stack>
 
 using std::wcout;
 using std::cout;
 using std::endl;
-using std::queue;
 using std::wostream;
+
+using std::queue;
+using std::stack;
+
+// global variable score
+int score = 0;
 
 /*
 	enum class Direction
 */
-enum class Direction
+enum class DIRECTION
 {
 	UP,
 	DOWN,
@@ -27,24 +33,17 @@ enum class Direction
 class Cell
 {
 	friend class Puzzle;
-	friend wostream& operator<<(wostream& os, Cell& rhs);
+
+public:
+	~Cell() = default;
 
 private:
 	Cell() = default;
-	~Cell() = default;
 
 	int mX;
 	int mY;
 	wchar_t mFigure;
 };
-
-/*
-	operator << func
-*/
-wostream& operator<<(wostream& os, Cell& rhs)
-{
-	return os << rhs.mFigure;
-}
 
 /*
 	class Puzzle
@@ -53,146 +52,286 @@ class Puzzle
 {
 public:
 	Puzzle();
+	~Puzzle() = default;
 
-	void move(const int x, const int y, Direction direction);
-	void printBoard();
+	void printPuzzle();
+	bool isMove(const int x, const int y, DIRECTION direction);
+	void move(const int x, const int y, DIRECTION direction);
 
 private:
-	bool isPossible(const int x, const int y)
+	void swap(wchar_t& target1, wchar_t& target2)
 	{
-		if (x >= PUZZLE_BOARD_SIZE) 
-		{
-			return false;
-		}
-		
-		if (x < 0) 
-		{
-			return false;
-		}
-
-		if (y >= PUZZLE_BOARD_SIZE) 
-		{
-			return false;
-		}
-
-		if (y < 0) 
-		{
-			return false;
-		}
-
-		return true;
-	}
-	
-	void swap(Cell& target1, Cell& target2)
-	{
-		Cell tmp = target1;
+		wchar_t tmpFigure = target1;
 		target1 = target2;
-		target2 = tmp;
+		target2 = tmpFigure;
 	}
 
-	void figureCrossCheak(const int x, const int y);
+	void BoardSetting();
+	void allCheckAndCrush();
 
-	enum
-	{
-		PUZZLE_BOARD_SIZE = 5,
-		FiGURE_SIZE = 5
-	};
+	bool weightCheck(const int x, const int y, stack<Cell>& data);
+	bool heightCheck(const int x, const int y, stack<Cell>& data);
 
-	Cell mBoard[PUZZLE_BOARD_SIZE][PUZZLE_BOARD_SIZE];
-	wchar_t mFigure[FiGURE_SIZE];
+	void weightCrush(stack<Cell>& data, const int y);
+	void heightCrush(stack<Cell>& data);
+
+	enum { BOARD_SIZE = 5, FIGURE_COUNT = 5 };
+	Cell mBoard[BOARD_SIZE][BOARD_SIZE];
+	wchar_t mFigures[FIGURE_COUNT];
 };
 
+/*
+	Puzzle class func
+*/
 Puzzle::Puzzle()
 	: mBoard()
-	, mFigure{ L'★',L'♥', L'◆', L'■', L'▲' }
+	, mFigures{ L'ㅁ', L'ㅇ', L'ㅋ', L'ㅎ', L'ㅍ', }
 {
-	for (int i = 0; i < PUZZLE_BOARD_SIZE; ++i)
-	{
-		for (int j = 0; j < PUZZLE_BOARD_SIZE; ++j)
-		{
-			mBoard[j][i].mX = i;
-			mBoard[j][i].mY = j;
-			mBoard[j][i].mFigure = mFigure[rand() % 5];
-		}
-	}
+	BoardSetting();
+	allCheckAndCrush();
+	score = 0;
 }
 
-void Puzzle::move(const int x, const int y, Direction direction)
-{
-	assert(x < PUZZLE_BOARD_SIZE&& y < PUZZLE_BOARD_SIZE&& x >= 0 && y >= 0);
-
-	switch (direction)
-	{
-	case Direction::UP:
-
-		if (isPossible(x, y - 1))
-		{
-			swap(mBoard[x][y], mBoard[x][y - 1]);
-			figureCrossCheak(x, y - 1);
-		}
-		break;
-	case Direction::DOWN:
-
-		if (isPossible(x, y + 1))
-		{
-			swap(mBoard[x][y], mBoard[x][y + 1]);
-			figureCrossCheak(x, y + 1);
-		}
-		break;
-	case Direction::RIGHT:
-
-		if (isPossible(x + 1, y))
-		{
-			swap(mBoard[x][y], mBoard[x + 1][y]);
-			figureCrossCheak(x + 1, y);
-		}
-		break;
-	case Direction::LEFT:
-
-		if (isPossible(x - 1, y))
-		{
-			swap(mBoard[x][y], mBoard[x - 1][y]);
-			figureCrossCheak(x - 1, y);
-		}
-		break;
-	}
-}
-
-void Puzzle::printBoard()
+void Puzzle::printPuzzle()
 {
 	setlocale(LC_ALL, "");
 
-	for (int i = 0; i < PUZZLE_BOARD_SIZE; ++i)
+	for (int i = 0; i < BOARD_SIZE; ++i)
 	{
 		cout << "----------------" << endl;
-		for (int j = 0; j < PUZZLE_BOARD_SIZE; ++j)
+		for (int j = 0; j < BOARD_SIZE; ++j)
 		{
-			wcout << '|' << mBoard[j][i];
+			wcout << '*' << mBoard[i][j].mFigure;
 		}
-		cout << '|' << endl;
+		cout << '*' << endl;
 	}
 	cout << "----------------" << endl;
 }
 
-void Puzzle::figureCrossCheak(const int x, const int y)
+bool Puzzle::isMove(const int x, const int y, DIRECTION direction)
 {
-	struct queueData 
-	{
-		Cell cell;
-		Direction direction;
-	};
-	
-	Cell cell = mBoard[x][y];
-	queue<queueData> queue;
+	bool result = true;
 
-	/*
-		자신을 기준으로 x + 1, x - 1, y + 1, y - 1
-		값을 한 번씩 비교 후 같은 모양만 넣는다. 
-		
-		이 때 조건은 
-		x or y 가 PUZZLE_SIZE 보다 작고
-		0 보다 크며
-		같은 도형만
-		큐에 집어 넣는다. 
-	*/
+	switch (direction)
+	{
+	case DIRECTION::UP:
+		if (y - 1 < 0)
+		{
+			result = false;
+		}
+		break;
+
+	case DIRECTION::DOWN:
+		if (y + 1 >= BOARD_SIZE)
+		{
+			result = false;
+		}
+		break;
+
+	case DIRECTION::RIGHT:
+		if (x + 1 >= BOARD_SIZE)
+		{
+			result = false;
+		}
+		break;
+
+	case DIRECTION::LEFT:
+		if (x - 1 < 0)
+		{
+			result = false;
+		}
+		break;
+	}
+
+	return result;
+}
+
+void Puzzle::move(const int x, const int y, DIRECTION direction)
+{
+	stack<Cell> stack;
+
+	switch (direction)
+	{
+	case DIRECTION::UP:
+		swap(mBoard[y][x].mFigure, mBoard[y - 1][x].mFigure);
+
+		if (weightCheck(x, y - 1, stack))
+		{
+			weightCrush(stack, y - 1);
+		}
+
+		if (heightCheck(x, y - 1, stack))
+		{
+			heightCrush(stack);
+		}
+
+		break;
+
+	case DIRECTION::DOWN:
+		swap(mBoard[y][x].mFigure, mBoard[y + 1][x].mFigure);
+
+		if (weightCheck(x, y + 1, stack))
+		{
+			weightCrush(stack, y + 1);
+		}
+
+		if (heightCheck(x, y + 1, stack))
+		{
+			heightCrush(stack);
+		}
+
+		break;
+
+	case DIRECTION::RIGHT:
+		swap(mBoard[y][x].mFigure, mBoard[y][x + 1].mFigure);
+
+		if (weightCheck(x + 1, y, stack))
+		{
+			weightCrush(stack, y);
+		}
+
+		if (heightCheck(x + 1, y, stack))
+		{
+			heightCrush(stack);
+		}
+
+		break;
+
+	case DIRECTION::LEFT:
+		swap(mBoard[y][x].mFigure, mBoard[y][x - 1].mFigure);
+		if (weightCheck(x - 1, y, stack))
+		{
+			weightCrush(stack, y);
+		}
+
+		if (heightCheck(x - 1, y, stack))
+		{
+			heightCrush(stack);
+		}
+
+		break;
+	}
+
+	allCheckAndCrush();
+}
+
+void Puzzle::BoardSetting() 
+{
+	for (int i = 0; i < BOARD_SIZE; ++i)
+	{
+		for (int j = 0; j < BOARD_SIZE; ++j)
+		{
+			mBoard[i][j].mX = j;
+			mBoard[i][j].mY = i;
+			mBoard[i][j].mFigure = mFigures[rand() % 5];
+		}
+	}
+}
+
+void Puzzle::allCheckAndCrush()
+{
+	stack<Cell> stack;
+
+	for (int i = 0; i < BOARD_SIZE; ++i) 
+	{
+		if (weightCheck(i , i, stack)) 
+		{
+			weightCrush(stack, i);
+		}
+
+		if (heightCheck(i , i, stack))
+		{
+			heightCrush(stack);
+		}
+	}
+}
+
+bool Puzzle::weightCheck(const int x, const int y, stack<Cell>& stack)
+{
+	for (int i = 0; i < BOARD_SIZE; ++i)
+	{
+		if (mBoard[y][i].mFigure == mBoard[y][i + 1].mFigure)
+		{
+			stack.push(mBoard[y][i]);
+		}
+		else
+		{
+			if (2 <= stack.size())
+			{
+				stack.push(mBoard[y][i]);
+				return true;
+			}
+			if (0 != stack.size())
+			{
+				stack.pop();
+			}
+		}
+	}
+	return false;
+}
+
+bool Puzzle::heightCheck(const int x, const int y, stack<Cell>& stack)
+{
+	for (int i = 0; i < BOARD_SIZE; ++i)
+	{
+		if (mBoard[i][x].mFigure == mBoard[i + 1][x].mFigure)
+		{
+			stack.push(mBoard[i][x]);
+		}
+		else
+		{
+			if (2 <= stack.size())
+			{
+				stack.push(mBoard[i][x]);
+				return true;
+			}
+			if (0 != stack.size())
+			{
+				stack.pop();
+			}
+		}
+	}
+	return false;
+}
+
+void Puzzle::weightCrush(stack<Cell>& stack, const int y)
+{
+	if (3 <= stack.size())
+	{
+		score += stack.size();
+
+		while (!stack.empty())
+		{
+			int i = y;
+			for (; i > 0; --i)
+			{
+				mBoard[i][stack.top().mX].mFigure = mBoard[i - 1][stack.top().mX].mFigure;
+			}
+
+			mBoard[i][stack.top().mX].mFigure = mFigures[rand() % 5];
+			stack.pop();
+		}
+	}
+}
+
+void Puzzle::heightCrush(stack<Cell>& stack)
+{
+	if (3 <= stack.size())
+	{
+		score += stack.size();
+
+		while (!stack.empty())
+		{
+			if (stack.top().mY - 3 >= 0)
+			{
+				mBoard[stack.top().mY][stack.top().mX].mFigure = mBoard[stack.top().mY - 3][stack.top().mX].mFigure;
+			}
+			else
+			{
+				mBoard[stack.top().mY][stack.top().mX].mFigure = mFigures[rand() % 5];
+			}
+
+			stack.pop();
+		}
+	}
 }

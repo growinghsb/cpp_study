@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{91b5c9f4-940b-423c-ad4f-c456a92e8303}</ProjectGuid>
-    <RootNamespace>Algorithem</RootNamespace>
+    <ProjectGuid>{c003a524-3acc-4037-8a40-8aa92051a363}</ProjectGuid>
+    <RootNamespace>PuzzleGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,51 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="10.cpp" />
-    <ClCompile Include="11.cpp" />
-    <ClCompile Include="13.cpp" />
-    <ClCompile Include="5.cpp" />
-    <ClCompile Include="6.cpp" />
-    <ClCompile Include="7.cpp" />
-    <ClCompile Include="8.cpp" />
-    <ClCompile Include="9.cpp" />
-    <ClCompile Include="9Mod.cpp" />
-    <ClCompile Include="Arr.cpp" />
-    <ClCompile Include="CArr.cpp" />
-    <ClCompile Include="CArrMain.cpp" />
-    <ClCompile Include="GetMinMaxMain.cpp" />
-    <ClCompile Include="GraphAdjacencyMatrix.cpp" />
-    <ClCompile Include="HomewordList.cpp" />
-    <ClCompile Include="HomeWork1129.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
-    <ClCompile Include="LinkedMain.cpp" />
-    <ClCompile Include="ListMain.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MapMain.cpp" />
-    <ClCompile Include="MyListMain.cpp" />
-    <ClCompile Include="1.cpp" />
-    <ClCompile Include="2.cpp" />
-    <ClCompile Include="3.cpp" />
-    <ClCompile Include="4.cpp" />
-    <ClCompile Include="MyStack.cpp" />
-    <ClCompile Include="QuickEx.cpp" />
-    <ClCompile Include="SortPra.cpp" />
-    <ClCompile Include="Sorts.cpp" />
-    <ClCompile Include="StrReverse.cpp" />
-    <ClCompile Include="StudentSort.cpp" />
-    <ClCompile Include="Temp.cpp" />
+    <ClCompile Include="Puzzle.cpp" />
+    <ClCompile Include="PuzzleGameMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arr.h" />
-    <ClInclude Include="CArr.h" />
-    <ClInclude Include="CList.h" />
-    <ClInclude Include="DinamicArr.h" />
-    <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="List.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="MyStack.h" />
-    <ClInclude Include="Sorted.h" />
-    <ClInclude Include="Sorts.h" />
+    <ClInclude Include="Puzzle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

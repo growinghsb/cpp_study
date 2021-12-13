@@ -144,6 +144,7 @@
     <ClCompile Include="CopyConstructor.cpp" />
     <ClCompile Include="delete.h" />
     <ClCompile Include="Memo.cpp" />
+    <ClCompile Include="PracticeMain.cpp" />
     <ClCompile Include="Sub.cpp" />
     <ClCompile Include="Super.cpp" />
   </ItemGroup>

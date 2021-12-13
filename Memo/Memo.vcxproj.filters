@@ -42,6 +42,9 @@
     <ClCompile Include="CopyConstructor.cpp">
       <Filter>Source Files\ConstructorTest</Filter>
     </ClCompile>
+    <ClCompile Include="PracticeMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A.h">

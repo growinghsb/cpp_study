@@ -3,11 +3,11 @@
 
 using std::cin;
 
-extern int score;
+extern int gScore;
 
 int main()
 {
-	srand(time(nullptr));
+	srand((unsigned int)time(nullptr));
 
 	Puzzle puzzle;
 
@@ -15,7 +15,7 @@ int main()
 	{
 		system("cls");
 
-		cout << endl << "현재점수: " << score << "점" << endl << endl;
+		cout << endl << "현재점수: " << gScore << "점" << endl << endl;
 		puzzle.printPuzzle();
 
 		int x = 0, y = 0;

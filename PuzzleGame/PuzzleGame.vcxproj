@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Puzzle.cpp" />
     <ClCompile Include="PuzzleGameMain.cpp" />
   </ItemGroup>
   <ItemGroup>

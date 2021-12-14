@@ -14,7 +14,7 @@ using std::queue;
 using std::stack;
 
 // global variable score
-int score = 0;
+int gScore;
 
 /*
 	enum class Direction
@@ -89,7 +89,7 @@ Puzzle::Puzzle()
 {
 	BoardSetting();
 	allCheckAndCrush();
-	score = 0;
+	gScore = 0;
 }
 
 void Puzzle::printPuzzle()
@@ -148,67 +148,22 @@ bool Puzzle::isMove(const int x, const int y, DIRECTION direction)
 
 void Puzzle::move(const int x, const int y, DIRECTION direction)
 {
-	stack<Cell> stack;
-
 	switch (direction)
 	{
 	case DIRECTION::UP:
 		swap(mBoard[y][x].mFigure, mBoard[y - 1][x].mFigure);
-
-		if (weightCheck(x, y - 1, stack))
-		{
-			weightCrush(stack, y - 1);
-		}
-
-		if (heightCheck(x, y - 1, stack))
-		{
-			heightCrush(stack);
-		}
-
 		break;
 
 	case DIRECTION::DOWN:
 		swap(mBoard[y][x].mFigure, mBoard[y + 1][x].mFigure);
-
-		if (weightCheck(x, y + 1, stack))
-		{
-			weightCrush(stack, y + 1);
-		}
-
-		if (heightCheck(x, y + 1, stack))
-		{
-			heightCrush(stack);
-		}
-
 		break;
 
 	case DIRECTION::RIGHT:
 		swap(mBoard[y][x].mFigure, mBoard[y][x + 1].mFigure);
-
-		if (weightCheck(x + 1, y, stack))
-		{
-			weightCrush(stack, y);
-		}
-
-		if (heightCheck(x + 1, y, stack))
-		{
-			heightCrush(stack);
-		}
-
 		break;
 
 	case DIRECTION::LEFT:
 		swap(mBoard[y][x].mFigure, mBoard[y][x - 1].mFigure);
-		if (weightCheck(x - 1, y, stack))
-		{
-			weightCrush(stack, y);
-		}
-
-		if (heightCheck(x - 1, y, stack))
-		{
-			heightCrush(stack);
-		}
-
 		break;
 	}
 
@@ -298,7 +253,7 @@ void Puzzle::weightCrush(stack<Cell>& stack, const int y)
 {
 	if (3 <= stack.size())
 	{
-		score += stack.size();
+		gScore += (int)stack.size();
 
 		while (!stack.empty())
 		{
@@ -318,7 +273,7 @@ void Puzzle::heightCrush(stack<Cell>& stack)
 {
 	if (3 <= stack.size())
 	{
-		score += stack.size();
+		gScore += (int)stack.size();
 
 		while (!stack.empty())
 		{

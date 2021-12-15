@@ -1,64 +1,33 @@
-#include<iostream>
+#include <iostream>
 
-//template<typename T>
-//void Add(T v1, T v2)
-//{
-//	T tmp = v1;
-//	v1 = v2;
-//	v2 = tmp;
-//}
+using std::cout;
+using std::endl;
 
-template<typename T>
-void Add(T& v1, T& v2)
+class Test 
 {
-	T tmp = v1;
-	v1 = v2;
-	v2 = tmp;
-}
+public:
+	Test(int a) 
+		: mA(a)
+	{
+	}
 
+	void operator=(const Test& rhs) 
+	{
+		cout << "나 대입연산자" << endl;
+		mA = rhs.mA;
+	}
 
-//template<typename T>
-//int Add(T&& v1, T&& v2)
-//{
-//	return v1 + v2;
-//}
+private:
+	int mA;
+};
 
-//void Add(int& a, int& b)
-//{
-//	int tmp = a;
-//	a = b;
-//	b = tmp;
-//}
-int& Test()
+int main()
 {
-	int a = 100;
+	Test test1(10);
+	Test test2 = test1;
 
-	return a;
-}
-
-int Test222()
-{
-	return 0;
-}
-
-int main(void)
-{
-	int a = 10;
-	int b = 20;
-	int& c = a;
-	int& d = b;
-
-
-	Add(a, b);
-	Add(c, d);
-	
-	//const int& aa = Test();
-
-	//Test222();
-	//Test222();
-	//Test222();
-
-	//std::cout << aa;
+	test1 = test2;
+	test1.operator=(test2);
 
 	return 0;
 }

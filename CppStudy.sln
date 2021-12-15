@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Memo\Memo.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PuzzleGame", "PuzzleGame\PuzzleGame.vcxproj", "{C003A524-3ACC-4037-8A40-8AA92051A363}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SokobanGame", "SokobanGame\SokobanGame.vcxproj", "{8085EA48-D874-4B7E-A415-C0A4091739E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,14 @@ Global
 		{C003A524-3ACC-4037-8A40-8AA92051A363}.Release|x64.Build.0 = Release|x64
 		{C003A524-3ACC-4037-8A40-8AA92051A363}.Release|x86.ActiveCfg = Release|Win32
 		{C003A524-3ACC-4037-8A40-8AA92051A363}.Release|x86.Build.0 = Release|Win32
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Debug|x64.ActiveCfg = Debug|x64
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Debug|x64.Build.0 = Debug|x64
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Debug|x86.ActiveCfg = Debug|Win32
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Debug|x86.Build.0 = Debug|Win32
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Release|x64.ActiveCfg = Release|x64
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Release|x64.Build.0 = Release|x64
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Release|x86.ActiveCfg = Release|Win32
+		{8085EA48-D874-4B7E-A415-C0A4091739E7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

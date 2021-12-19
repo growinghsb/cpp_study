@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="A.cpp" />
+    <ClCompile Include="ConstructorInVertualFunc.h" />
     <ClCompile Include="CopyConstructor.cpp" />
     <ClCompile Include="delete.h" />
     <ClCompile Include="Memo.cpp" />
@@ -149,8 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A.h" />
+    <ClInclude Include="CopyLoss.h" />
     <ClInclude Include="Sub.h" />
     <ClInclude Include="Super.h" />
+    <ClInclude Include="ThisCall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

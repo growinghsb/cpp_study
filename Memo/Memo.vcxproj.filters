@@ -22,6 +22,9 @@
     <Filter Include="Source Files\DeleteTest">
       <UniqueIdentifier>{50630a7f-629e-47d0-b36d-194cb4c6d045}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\WhySeries1">
+      <UniqueIdentifier>{ac6a8431-cc7c-444a-8aa2-17ddc95eb203}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="A.cpp">
@@ -42,6 +45,9 @@
     <ClCompile Include="CopyConstructor.cpp">
       <Filter>Source Files\ConstructorTest</Filter>
     </ClCompile>
+    <ClCompile Include="ConstructorInVertualFunc.h">
+      <Filter>Source Files\WhySeries1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A.h">
@@ -52,6 +58,12 @@
     </ClInclude>
     <ClInclude Include="Sub.h">
       <Filter>Source Files\ConstructorTest</Filter>
+    </ClInclude>
+    <ClInclude Include="ThisCall.h">
+      <Filter>Source Files\WhySeries1</Filter>
+    </ClInclude>
+    <ClInclude Include="CopyLoss.h">
+      <Filter>Source Files\WhySeries1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

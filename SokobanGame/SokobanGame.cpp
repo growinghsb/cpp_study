@@ -62,6 +62,7 @@ int main()
 		case 'w':
 			if (isMove(playerLocation - stageWidth, -stageWidth))
 			{
+
 				swap(stageStream[playerLocation], stageStream[playerLocation - stageWidth]);
 				playerLocation -= stageWidth;
 			}

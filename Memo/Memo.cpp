@@ -4,9 +4,9 @@
 
 int main() 
 {
-	//Child child;
-	//Parent* pChild = &child;
-	//pChild->Add();
+	Child child;
+	Parent* parent = &child;
+	parent->Add();
 
 	//Test::StaticFunc();
 	
@@ -17,7 +17,7 @@ int main()
 	//t->VirtualFunc();
 	//t->StaticFunc();
 
-	TestMain();
+	//TestMain();
 
 	return 0;
 }

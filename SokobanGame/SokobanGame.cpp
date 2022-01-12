@@ -34,7 +34,7 @@ static int stageMapCount;
 static int stageWidth;
 static int playerLocation;
 
-int readStage(const char* resource);
+void readStage(const char* resource);
 void printStage();
 bool isMove(const int targetPoint, const int moveCount);
 bool isObstacle(const int currnetLocation);
@@ -46,7 +46,7 @@ void swap(char& ch1, char& ch2);
 
 int main()
 {
-	stageMapCount = readStage("C:/Users/pon05/SokobanMap/stage2.txt");
+	readStage("C:/Users/pon05/SokobanMap/stage1.txt");
 
 	while (true)
 	{
@@ -97,7 +97,7 @@ int main()
 	return 0;
 }
 
-int readStage(const char* resource)
+void readStage(const char* resource)
 {
 	ifstream fin;
 
@@ -147,7 +147,7 @@ int readStage(const char* resource)
 
 	stageWidth = (mapInfoCount - stageNameCount) / newLineCount;
 
-	return mapInfoCount;
+	stageMapCount = mapInfoCount;
 }
 
 void printStage()
